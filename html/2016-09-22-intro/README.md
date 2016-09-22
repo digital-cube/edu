@@ -16,4 +16,14 @@ When you are defining styles in your project, some rules apply:
 - When styles overlap in the same element, only the last style is visible,
 - Style from parent is inherited to child
 - Rules of priorities are as follow : Script < !important < Element attribute < Class attribute < ID attribute
+
+CSS reset
+---------
+
+CSS reset is a short set of CSS rules that resets the styling of all HTML elements. Main purpose of this is to maintain the look of website same in every browser.
+
+CSS units
+---------
+
+
  
