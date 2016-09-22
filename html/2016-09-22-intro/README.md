@@ -22,8 +22,19 @@ CSS reset
 
 CSS reset is a short set of CSS rules that resets the styling of all HTML elements. Main purpose of this is to maintain the look of website same in every browser.
 
-CSS units
----------
+CSS units(px, em, %, pt)
+------------------------
 
+There is four different units by which you can measure size of your elements as it's displayed in the web browser:
+
+- Pixels (px): One pixel is equal to one dot on the computer screen.
+- EMs : Em is relative unit that is used in web. Em is equal to the current font-size(if font-size is 12pt 1em =12pt).Ems are scalabile.
+- Points (pt) : Similar to pixel, but one point is equal to 1/72 of an inch.
+- Percent (%) : Similar to ems, current font size is equal to 100%.
+
+Display, float, overflow and clear properties
+---------------------------------------------
+
+-Display : for controling layout of elements (none, block 
 
  
