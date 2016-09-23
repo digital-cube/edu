@@ -40,4 +40,19 @@ Git is based on three tier structure:
 - Active Directory
 - Local
 
-You made some changes on project files, first you need 
+![alt tag](https://raw.githubusercontent.com/ivokovacevic/edu/git/2016-09-23-git/git.png)
+
+
+After you made some changes on project files, you can see all new or modified files that need to be commited:
+
+```bash
+$ git status
+```
+
+You can see differences in exact files on local and cloud repository:
+
+```bash
+$ git diff
+```
+
+When yu
