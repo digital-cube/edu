@@ -35,7 +35,9 @@ There is four different units by which you can measure size of your elements as 
 Colapsing Margins (misc. Display, float, overflow and clear properties)
 -----------------------------------------------------------------------
 
-- Display property : For controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right. Common default block element are div, p and form.
+Before adresing Colapsing margins, there are some important properties to be avare of:
+
+- Display property : For controlling layout. Elements can be usually block or inline. Block-level element starts on a new line and stretches to the left and right. Common default block elements are div, p and form.
   Inline elements could be used to wrap some text or hyperlink inside a paragraph. Common default inline elements are span and a.
 
 - Float property : Specify whether element should align to left or right. If element is positioned absolutely, float property is ignored.
@@ -44,15 +46,23 @@ Colapsing Margins (misc. Display, float, overflow and clear properties)
 
 - Clear : 
 
-Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin witdhs. Margins of floating and absolutely
+Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin witdhs - **Margin Colapsed**. Margins of floating and absolutely
 positioned elements never collapse, so one of the solution is to avoid this probelem is : 
 
-'''html
+```html
 float:left
 clear:both
-'''
+```
 
 CSS calc() function
 -------------------
 
-When  
+When working with fixed height or width of element, adding padding will extend element size, so one quick fix is to use **calc() function**
+ and subtract size of padding added. Mind the spaces before and after operator.
+
+```html
+height:calc(100px - 2em)
+```
+
+Wrapper element in HTML markup
+------------------------------    
