@@ -5,7 +5,7 @@ The topics disscused were:
 - CSS rule priorities
 - CSS reset
 - CSS units (px, em, %, pt)
-- Display, float, overflow and clear properties
+- Collapsing margins (misc. Display, float, overflow and clear properties).
 - CSS calc() function
 - Wrapper element in HTML markup
 
@@ -32,12 +32,27 @@ There is four different units by which you can measure size of your elements as 
 - Points (pt) : Similar to pixel, but one point is equal to 1/72 of an inch.
 - Percent (%) : Similar to ems, current font size is equal to 100%.
 
-Display, float, overflow and clear properties
----------------------------------------------
+Colapsing Margins (misc. Display, float, overflow and clear properties)
+-----------------------------------------------------------------------
 
-- Display property : for controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right.
-- Float :
+- Display property : For controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right. Common default block element are div, p and form.
+  Inline elements could be used to wrap some text or hyperlink inside a paragraph. Common default inline elements are span and a.
+
+- Float property : Specify whether element should align to left or right. If element is positioned absolutely, float property is ignored.
+ 
 - Overflow :
+
 - Clear : 
 
- 
+Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin witdhs. Margins of floating and absolutely
+positioned elements never collapse, so one of the solution is to avoid this probelem is : 
+
+'''html
+float:left
+clear:both
+'''
+
+CSS calc() function
+-------------------
+
+When  
