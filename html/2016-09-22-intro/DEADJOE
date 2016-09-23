@@ -1,0 +1,77 @@
+
+*** These modified files were found in JOE when it aborted on Fri Sep 23 16:09:52 2016
+*** JOE was aborted because the terminal closed
+
+*** File 'README.md'
+LESSON 1
+========
+
+The topics disscused were:
+- CSS rule priorities
+- CSS reset
+- CSS units (px, em, %, pt)
+- Display, float, overflow and clear properties
+- CSS calc() function
+- Wrapper element in HTML markup
+
+CSS rule priorities
+-------------------
+
+When you are defining styles in your project, some rules apply:
+- When styles overlap in the same element, only the last style is visible,
+- Style from parent is inherited to child
+- Rules of priorities are as follow : Script < !important < Element attribute < Class attribute < ID attribute
+
+CSS reset
+---------
+
+CSS reset is a short set of CSS rules that resets the styling of all HTML elements. Main purpose of this is to maintain the look of website same in every browser by making common base.
+
+CSS units(px, em, %, pt)
+------------------------
+
+There is four different units by which you can measure size of your elements as it's displayed in the web browser:
+
+- Pixels (px): One pixel is equal to one dot on the computer screen.
+- EMs : Em is relative unit that is used in web. Em is equal to the current font-size(if font-size is 12pt 1em =12pt).Ems are scalabile.
+- Points (pt) : Similar to pixel, but one point is equal to 1/72 of an inch.
+- Percent (%) : Similar to ems, current font size is equal to 100%.
+
+Display, float, overflow and clear properties
+---------------------------------------------
+
+- Display property : for controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right.
+- Float :
+- Overflow :
+- Clear : 
+
+ 
+*** File '(Unnamed)'
+logo
+\euro
+&
+
+*** File '(Unnamed)'
+_util
+_util
+self
+self
+self.
+self
+var self
+initial_data
+initial_data
+#
+
+*** File '(Unnamed)'
+README.md
+/home/ivo/work/edu/.git/COMMIT_EDITMSG
+README.md
+/home/ivo/work/edu/.git/COMMIT_EDITMSG
+README.md
+README.md
+README.md
+/home/ivo/work/edu/.git/COMMIT_EDITMSG
+README.md
+/home/ivo/work/edu/.git/COMMIT_EDITMSG
+README.md
