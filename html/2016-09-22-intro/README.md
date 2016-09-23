@@ -20,7 +20,7 @@ When you are defining styles in your project, some rules apply:
 CSS reset
 ---------
 
-CSS reset is a short set of CSS rules that resets the styling of all HTML elements. Main purpose of this is to maintain the look of website same in every browser.
+CSS reset is a short set of CSS rules that resets the styling of all HTML elements. Main purpose of this is to maintain the look of website same in every browser by making common base.
 
 CSS units(px, em, %, pt)
 ------------------------
@@ -35,6 +35,8 @@ There is four different units by which you can measure size of your elements as 
 Display, float, overflow and clear properties
 ---------------------------------------------
 
--Display : for controling layout of elements (none, block 
-
+- Display property : for controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right.
+- Float :
+- Overflow :
+- Clear : 
  
