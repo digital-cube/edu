@@ -1,0 +1,35 @@
+body {
+    font-family:Arial;
+}
+
+table {
+    border:1px solid red;
+    width:100px;
+    max-width:100px;
+}
+
+table td {
+}
+
+table th {
+    background-color: lemonchiffon;
+}
+
+.mytable {
+    width:300px;
+    display:table;
+    border:1px solid red;
+    padding:1em;
+    border-collapse:separate;
+    border-spacing:1em;
+}
+
+.myrow {
+    display:table-row;
+}
+
+.mycell {
+    display:table-cell;
+    border:1px solid green;
+    padding:1em;
+}
