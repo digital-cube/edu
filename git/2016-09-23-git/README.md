@@ -40,7 +40,7 @@ Git is based on three tier structure:
 - Active Directory
 - Local
 
-![alt tag](https://raw.githubusercontent.com/ivokovacevic/edu/git/2016-09-23-git/git.png)
+![alt tag](https://raw.githubusercontent.com/digital-cube/edu/master/git/2016-09-23-git/git.png)
 
 
 After you made some changes on project files, you can see all new or modified files that need to be commited:
