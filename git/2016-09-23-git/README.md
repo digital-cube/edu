@@ -55,4 +55,25 @@ You can see differences in exact files on local and cloud repository:
 $ git diff
 ```
 
-When yu
+When finish creating new or editing current files, First you must add them first to prepare for commit:
+
+ ```bash
+$ git add [file]
+ ```
+
+If you want to revert changes made in local files:
+
+```bash
+$ git checkout [file]
+```
+
+When are all files added and changes ready, by commiting files are permanently saved in git version history:
+
+```bash
+$ git commit -m "[descriptive message]"
+```
+
+Branching
+---------
+
+Branching means that you can separete from main line(master branch) of developement and continue to do work on you branch without messing with that master line.
