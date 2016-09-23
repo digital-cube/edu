@@ -35,6 +35,7 @@ There is four different units by which you can measure size of your elements as 
 Display, float, overflow and clear properties
 ---------------------------------------------
 
--Display : for controling layout of elements (none, block 
+-Display : for controling layout of elements (none, block .....
+
 
  
