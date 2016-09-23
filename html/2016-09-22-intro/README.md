@@ -7,7 +7,7 @@ The topics disscused were:
 - CSS units (px, em, %, pt)
 - Collapsing margins (misc. Display, float, overflow and clear properties).
 - CSS calc() function
-- Wrapper element in HTML markup
+- Size of viewport( misc. wrapper element in HTML markup)
 
 CSS rule priorities
 -------------------
@@ -42,11 +42,11 @@ Before adresing Colapsing margins, there are some important properties to be ava
 
 - Float property : Specify whether element should align to left or right. If element is positioned absolutely, float property is ignored.
  
-- Overflow :
+- Overflow : Work for block elements with specific height, and it specify what happens if content of element overflows the size of element (visible, hidden, scroll)
 
-- Clear : 
+- Clear : Specifies on which side of an element floating elements are not allowed to float.
 
-Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin witdhs - **Margin Colapsed**. Margins of floating and absolutely
+Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin widths so one **margin colapsed**. Margins of floating and absolutely
 positioned elements never collapse, so one of the solution is to avoid this probelem is : 
 
 ```html
@@ -64,5 +64,31 @@ When working with fixed height or width of element, adding padding will extend e
 height:calc(100px - 2em)
 ```
 
-Wrapper element in HTML markup
-------------------------------    
+Size of viewport (misc. Wrapper element in HTML markup)
+----------------------------------------------------------------
+
+Best practice to center main part of the website (for example menu and content) is to use wrapper element, and to assign heigth to this element. Then use can use relative measures on child element that are
+ nested in wrapper element. In CSS3 there are new units: Viewportwidth(vw) and Viewportheight(vh). With them we can size elements to be relative to size of viewport or resolution of your screen (1vw = 1% of size of viewport),
+ so if you want to set element to full width of the screen you can set element width to 100vw.
+
+```html
+    #wrapper {
+        height:100vh;
+    }
+    #header {
+        padding:0.5em;
+        background-color: lightgreen;
+        height:3em;
+    }
+    #content {
+        padding:0.5em;
+        background-color: lightskyblue;
+        height:calc(100% - 6em - 3em);
+        overflow-y: auto;
+    }
+    #footer {
+        padding:0.5em;
+        background-color: lightsalmon;
+        height:3em;
+    }
+```     
