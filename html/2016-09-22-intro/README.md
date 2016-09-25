@@ -7,7 +7,7 @@ The topics disscused were:
 - CSS units (px, em, %, pt)
 - Collapsing margins (misc. Display, float, overflow and clear properties).
 - CSS calc() function
-- Wrapper element in HTML markup
+- Size of viewport( misc. wrapper element in HTML markup)
 
 CSS rule priorities
 -------------------
@@ -35,24 +35,60 @@ There is four different units by which you can measure size of your elements as 
 Colapsing Margins (misc. Display, float, overflow and clear properties)
 -----------------------------------------------------------------------
 
-- Display property : For controlling layout. Elements is usually block or inline. Block-level element start on a new line and stretches to the left and right. Common default block element are div, p and form.
+Before adresing Colapsing margins, there are some important properties to be avare of:
+
+- Display property : For controlling layout. Elements can be usually block or inline. Block-level element starts on a new line and stretches to the left and right. Common default block elements are div, p and form.
   Inline elements could be used to wrap some text or hyperlink inside a paragraph. Common default inline elements are span and a.
 
 - Float property : Specify whether element should align to left or right. If element is positioned absolutely, float property is ignored.
  
-- Overflow :
+- Overflow : Work for block elements with specific height, and it specify what happens if content of element overflows the size of element (visible, hidden, scroll)
 
-- Clear : 
+- Clear : Specifies on which side of an element floating elements are not allowed to float.
 
-Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin witdhs. Margins of floating and absolutely
+Margins of two or more elements(which may be next to one another or nested) overlap and form a single margin. The resulting margin width is the maximum of two margin widths so one **margin colapsed**. Margins of floating and absolutely
 positioned elements never collapse, so one of the solution is to avoid this probelem is : 
 
-'''html
+```html
 float:left
 clear:both
-'''
+```
 
 CSS calc() function
 -------------------
 
-When  
+When working with fixed height or width of element, adding padding will extend element size, so one quick fix is to use **calc() function**
+ and subtract size of padding added. Mind the spaces before and after operator.
+
+```html
+height:calc(100px - 2em)
+```
+
+Size of viewport (misc. Wrapper element in HTML markup)
+----------------------------------------------------------------
+
+Best practice to center main part of the website (for example menu and content) is to use wrapper element, and to assign heigth to this element. Then use can use relative measures on child element that are
+ nested in wrapper element. In CSS3 there are new units: Viewportwidth(vw) and Viewportheight(vh). With them we can size elements to be relative to size of viewport or resolution of your screen (1vw = 1% of size of viewport),
+ so if you want to set element to full width of the screen you can set element width to 100vw.
+
+```html
+    #wrapper {
+        height:100vh;
+    }
+    #header {
+        padding:0.5em;
+        background-color: lightgreen;
+        height:3em;
+    }
+    #content {
+        padding:0.5em;
+        background-color: lightskyblue;
+        height:calc(100% - 6em - 3em);
+        overflow-y: auto;
+    }
+    #footer {
+        padding:0.5em;
+        background-color: lightsalmon;
+        height:3em;
+    }
+```     
