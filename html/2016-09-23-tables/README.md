@@ -145,7 +145,8 @@ Only solution is to style parent DIV with border spacing property:
 
 [From the MDN documentation:](https://developer.mozilla.org/en-US/docs/CSS/margin)
 ```html
-    [The margin property] applies to all elements except elements with table display types other than table-caption, table and inline-table
+    [The margin property] applies to all elements except elements with table
+     display types other than table-caption, table and inline-table
 ```
 
 - In CSS style you must write:
@@ -157,4 +158,4 @@ table {
       }
 ```
 The values for border-spacing are two length measurements. First value (horizontal) applies between columns,
-the second measurement is applied between rows. If you provide one value, it will be used both horizontally and vertically
+the second measurement is applied between rows. If you provide one value, it will be used both horizontally and vertically.
