@@ -4,7 +4,7 @@ Table of contents
 Git
 ---
 
-- 2016-09-23 Lesson 3 Appendix - Git introduction -
+- [2016-09-23 Lesson 3 Appendix - Git introduction - ](https://github.com/digital-cube/edu/tree/master/git/2016-09-23-git)
 ```bash
 Cloning (checkout) repository
 Configure user information
@@ -24,7 +24,7 @@ CSS units (px, em, %, pt)
 Collapsing margins (misc. Display, float, overflow and clear properties).
 CSS calc() function
 Size of viewport( misc. wrapper element in HTML markup)
-```bash
+```
 
 - 2016-09-23 - Tables -
 ```bash
