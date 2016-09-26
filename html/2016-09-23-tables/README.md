@@ -24,11 +24,12 @@ Tables performance
 ------------------
 
 -Table borders
-The example below specifies a black border for <table>, <th>, and <td> elements:
-**table, th, td {
+The example below specifies a black border for table, th and td elements:
+```html
+table, th, td {
                         border: 1px solid black;
-                    }**
-
+                    }
+```
 ```html
 <!DOCTYPE html>
             <html lang="en">
@@ -64,8 +65,8 @@ The example below specifies a black border for <table>, <th>, and <td> elements:
 
 DIV
 ---
-The <div> tag defines a division or a section of the page.
-Div give us structure to our page. The <div> tag is used to group block-elements to format them with CSS.
+The DIV tag defines a division or a section of the page.
+Div give us structure to our page. The div tag is used to group block-elements to format them with CSS.
 
 CLASS
 -----
