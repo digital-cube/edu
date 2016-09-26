@@ -20,8 +20,8 @@ table th {
     display:table;
     border:1px solid red;
     padding:1em;
-    border-collapse:separate;
-    border-spacing:1em;
+   /* border-collapse:separate;
+    border-spacing:1em;*/
 }
 
 .myrow {
@@ -32,4 +32,7 @@ table th {
     display:table-cell;
     border:1px solid green;
     padding:1em;
+    /*border-collapse:separate;*/
+    /*border-spacing:1em;*/
+    margin: 1em;
 }
