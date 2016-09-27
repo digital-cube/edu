@@ -110,6 +110,7 @@ $ git branch -d [branch-name]
 ```
 Create a remote branch
 ----------------------
+
 Remote references are references (pointers) in your remote repositories, including branches and tags.
 You can get a full list of remote references explicitly with:
 
