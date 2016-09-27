@@ -1,5 +1,5 @@
 import tornado.ioloop
-import tornado.web
+import tornad 0o.web
 
 
 class MainHandler(tornado.web.RequestHandler):
