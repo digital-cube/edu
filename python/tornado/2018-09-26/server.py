@@ -24,10 +24,6 @@ PATCH http://api.example.com/users/u00000124/?username=Zika
 DELETE http://api.example.com/users/u00000912
 
 
-
-
-
-
 '''
 
 import tornado.ioloop
