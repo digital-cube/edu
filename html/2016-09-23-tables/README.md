@@ -3,7 +3,7 @@ LESSON 2
 The topics discussed were:
 - Defining an HTML Table
 - Colspan and Rowspan in html
-- Tables performance in css
+- Table performance in css
 - DIV, CLASS and ID
 - Example
 - Problem with margin property of table cells
@@ -23,7 +23,8 @@ Colspan and Rowspan in html
 Tables performance
 ------------------
 
--Table borders
+- Table borders
+
 The example below specifies a black border for table, th and td elements:
 ```html
 table, th, td {
