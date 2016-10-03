@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block slider %}
+  {% include 'slider.html' %}
+{% end %}
+
+{% block content %}
+
+  <div id="content">
+
+    <ul>
+      {% for product in products %}
+
+        <li>
+          <h1>
+            {{ product['title'] }}
+          </h1>
+          <div class="content">
+            <img
+                    style="float:{{ product['image-pos'] }}"
+                    src="{{ product['image'] }}"/>
+            {% raw product['content'] %}
+          </div>
+
+        </li>
+
+      {% end %}
+
+    </ul>
+
+  </div>
+
+{% end %}
+
