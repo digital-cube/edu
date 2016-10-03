@@ -28,11 +28,17 @@ Html
 
 [2. 2016-09-23 - Tables ](https://github.com/digital-cube/edu/tree/master/html/2016-09-23-tables)
 
-  1. Defining an HTML Table
-  2. Colspan and Rowspan in html
-  3. Problem with margin property of table cells
-
-
+  1. Defining an HTML Table, Colspan and Rowspan
+  2. Tables performance in css
+  3. DIV, CLASS and ID definitions
+  4. Problem with margin property of table cells
 
 Python
 ------
+
+[1. 2016-09-26 - Tornado](https://github.com/digital-cube/edu/tree/master/python/tornado)
+
+  1. Instalation
+  2. REST
+  3. Class definitions
+  4. Tornado web server example

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <link rel='stylesheet'
+          href='css/main.css'
+          type='text/css'
+          media='all' />
+
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+
+{% include 'tpl/header.html' %}
+
+<div id="content">
+    {% block body %}{% end %}
+</div>
+
+{% include 'tpl/footer.html' %}
+
+</body>
+</html>

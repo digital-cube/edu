@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+<div id="content">
+{% block body %}
+    {% for item in news %}
+
+        <div>{% raw item['content'] %}</div>
+
+        <div>
+            {% module News(item) %}
+        </div>
+    {% end %}
+{% end %}
+</div>

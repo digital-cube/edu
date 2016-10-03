@@ -1,0 +1,63 @@
+
+*** These modified files were found in JOE when it aborted on Fri Sep 23 15:07:23 2016
+*** JOE was aborted because the terminal closed
+
+*** File '/home/www/Documents/DigitalCude/edu/.git/MERGE_MSG'
+Merge branch 'master' of https://github.com/digital-cube/edu
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+
+*** File '(Unnamed)'
+aca.txt
+/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG
+aca.txt
+/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG
+/home/www/Documents/DigitalCude/edu/.git/MERGE_MSG
+
+*** These modified files were found in JOE when it aborted on Mon Sep 26 00:14:52 2016
+*** JOE was aborted by UNIX signal 1
+
+*** File '/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG'
+Merge branch 'master' of https://github.com/digital-cube/edu
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with '#' will be ignored, and an empty message aborts
+# the commit.
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch and 'origin/master' have diverged,
+# and have 1 and 2 different commits each, respectively.
+#   (use "git pull" to merge the remote branch into yours)
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   ../2016-09-22-intro/README.md
+#
+# Untracked files:
+#	../../DEADJOE
+#
+
+*** File '(Unnamed)'
+aca.txt
+/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG
+aca.txt
+/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG
+/home/www/Documents/DigitalCude/edu/.git/COMMIT_EDITMSG
+
+*** These modified files were found in JOE when it aborted on Mon Sep 26 10:55:42 2016
+*** JOE was aborted because the terminal closed
