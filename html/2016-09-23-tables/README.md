@@ -35,7 +35,7 @@ table, th, td {
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
-                <title>TABELA</title>
+                <title>TABLES</title>
                 <style t="text/css">
                     table, th, td {
                         border: 1px solid black;
@@ -45,13 +45,13 @@ table, th, td {
             <body>
             <table>
                 <tr>
-                <th>ZIKA</th>
+                <th>Test 1</th>
                 <td> I love tables</td>
                 <td> I love tables</td>
                 <td> I love tables</td>
                 </tr>
                 <tr>
-                <th>PERA</th>
+                <th>Test 2</th>
                 <td> I love tables</td>
                 <td> I love tables</td>
                 <td> I love tables</td>
