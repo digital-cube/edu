@@ -7,28 +7,23 @@
 {% block content %}
 
   <div id="content">
-
     <ul>
       {% for product in products %}
-
-        <li>
-          <h1>
-            {{ product['title'] }}
-          </h1>
+        <li style="background-color:{{ product['background-color']}}">
           <div class="content">
-            <img
-                    style="float:{{ product['image-pos'] }}"
-                    src="{{ product['image'] }}"/>
-            {% raw product['content'] %}
+            <div class="with-img-{{product['image-pos']}}">
+              <div class="ctext">
+                <h1>{{ product['title'] }}</h1>
+                  {% raw product['content'] %}
+              </div>
+              <div class="cimg">
+                <img src="{{ product['image'] }}"/>
+              </div>
+            </div>
           </div>
-
         </li>
-
       {% end %}
-
     </ul>
-
   </div>
-
 {% end %}
 

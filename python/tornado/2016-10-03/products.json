@@ -1,19 +1,31 @@
 [
   {
-    "title": "Production extrusion blown bottles and cans",
-    "content-file": "lorem-ipsum.html",
+    "title": "Produktion extrusionsgeblasene Flaschen und Dosen",
+    "content-file": "produktion1.html",
     "image": "http://www.vogelverpackungen.ch/fileadmin/_processed_/csm_produktion_extrusionblasen_4203fd6ade.jpg",
     "image-pos": "left"
   },
   {
-    "title": "Production plastics blow molding technical parts",
-    "content-file": "lorem-ipsum-2.html",
+    "title": "Produktion extrusionsgeblasene technische Teile",
+    "content-file": "produktion2.html",
+    "image": "http://www.vogelverpackungen.ch/fileadmin/_processed_/csm_DSC_0256_55258b88bc.jpg",
+    "image-pos": "right"
+  },
+ {
+    "title": "Produktion Spritzguss",
+    "content-file": "produktion3.html",
+    "image": "http://www.vogelverpackungen.ch/fileadmin/_processed_/csm_produktion_extrusionblasen_4203fd6ade.jpg",
+    "image-pos": "left"
+  },
+  {
+    "title": "Entwicklung",
+    "content-file": "produktion4.html",
     "image": "http://www.vogelverpackungen.ch/fileadmin/_processed_/csm_DSC_0256_55258b88bc.jpg",
     "image-pos": "right"
   },
   {
-    "title": "production injection",
-    "content-file": "lorem-ipsum.html",
+    "title": "Nachbearbeitung",
+    "content-file": "produktion5.html",
     "image": "http://www.vogelverpackungen.ch/fileadmin/_processed_/csm_produktion_spritzguss_0904_4408a98fb0.jpg"
   }
 ]

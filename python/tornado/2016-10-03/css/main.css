@@ -2,46 +2,157 @@ body {
   float: left;
   clear: both;
   width: 100%;
-  line-height: 1.5em;
-  width: 1224px; }
+  line-height: 1.5em; }
 
 p {
-  padding-bottom: 1em; }
+  padding-bottom: 0.5em; }
+
+.cruve {
+  width: 100%;
+  z-index: 0;
+  margin: 0 auto;
+  background: white;
+  height: 200px;
+  position: absolute;
+  transform-origin: left top;
+  transform: skewY(-2.5deg); }
 
 #header {
-  width: 100%;
-  background-color: lightcoral;
-  float: left;
-  clear: both; }
+  z-index: 2;
+  position: relative;
+  padding-top: 30px; }
+  #header img {
+    margin: 0.5em 5em; }
+  #header .navbar {
+    float: right;
+    margin: 2em 5em; }
+    #header .navbar ul li {
+      float: left;
+      padding: 0 1em; }
+      #header .navbar ul li a {
+        color: black; }
+      #header .navbar ul li a:hover {
+        color: #00346b; }
 
 #slider {
   width: 100%;
-  background-color: lightblue;
   float: left;
-  clear: both; }
+  clear: both;
+  background: url(../images/slide-0.png) no-repeat center;
+  background-size: cover;
+  height: 50em;
+  margin-top: -120px; }
   #slider .content {
-    color: yellow; }
+    color: white;
+    text-align: left;
+    margin: auto;
+    width: 655px;
+    margin-top: 180px; }
+    #slider .content h3 {
+      font-size: 45px; }
+    #slider .content ul {
+      font-size: 45px;
+      padding: 20px; }
+      #slider .content ul li {
+        padding: 15px;
+        text-align: left;
+        position: relative;
+        z-index: 2; }
+        #slider .content ul li:before {
+          background: url(../images/li-bg.png) no-repeat;
+          content: "";
+          width: 32px;
+          height: 23px;
+          left: 2px;
+          top: 5px;
+          z-index: 3;
+          position: absolute; }
 
 #content {
   width: 100%;
-  background-color: lightgreen;
   float: left;
   clear: both; }
   #content ul li {
     padding: 1em 0;
     float: left;
-    clear: both; }
+    clear: both;
+    width: 100%;
+    border-bottom: 4px solid #f0f0f0; }
     #content ul li h1 {
       font-size: 28px;
-      color: red; }
+      color: #00346b; }
     #content ul li .content {
-      color: blue; }
+      color: gray;
+      width: 100%; }
+      #content ul li .content .ctext {
+        background-color: lightblue;
+        float: left;
+        width: calc(50% - 60px);
+        min-height: 190px;
+        padding: 30px; }
+      #content ul li .content .cimg {
+        background-color: lightsteelblue;
+        float: right;
+        width: 50%;
+        min-height: 250px; }
+      #content ul li .content .with-img-right .ctext {
+        float: left; }
+      #content ul li .content .with-img-right .cimg {
+        float: right; }
+      #content ul li .content .with-img-left .ctext {
+        float: right; }
+      #content ul li .content .with-img-left .cimg {
+        float: left; }
       #content ul li .content img {
         float: left;
-        margin: 0.5em; }
+        margin: 0.5em;
+        position: relative; }
+        #content ul li .content img:before {
+          background: url(../images/li-bg.png) no-repeat;
+          content: "";
+          width: 35px;
+          height: 27px;
+          right: 90px;
+          top: -13px;
+          z-index: 1;
+          background-size: contain;
+          position: absolute; }
+        #content ul li .content img:after {
+          background: url(../images/li-bg.png) no-repeat;
+          content: "";
+          width: 35px;
+          height: 27px;
+          left: -12px;
+          bottom: -13px;
+          z-index: 1;
+          background-size: contain;
+          position: absolute; }
 
 #footer {
   width: 100%;
-  background-color: lightskyblue;
+  background-color: #00346b;
+  padding: 2em 0em;
   float: left;
   clear: both; }
+  #footer .address {
+    font-size: 1em;
+    color: white;
+    width: 8%;
+    float: left;
+    overflow: hidden;
+    margin: 1em 5em; }
+  #footer .phone {
+    color: white;
+    font-size: 1em;
+    margin: 1em 0.5em;
+    overflow: hidden;
+    float: left; }
+  #footer .navbar {
+    float: right;
+    margin: 1em 5em; }
+    #footer .navbar ul li {
+      float: left;
+      padding: 0 1em;
+      color: white; }
+      #footer .navbar ul li a {
+        color: white; }

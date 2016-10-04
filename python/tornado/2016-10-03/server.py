@@ -10,9 +10,15 @@ class MainHandler(tornado.web.RequestHandler):
         with open('products.json', 'r') as f:
             products = json.load(f)
 
+        nr=0
         for product in products:
+            nr += 1
             if 'image-pos' not in product:
                 product['image-pos'] = 'left'
+
+            if 'background-color' not in product:
+
+                product['background-color'] = '#fafafa' if nr%2==0 else 'white'
 
             if 'content' not in product:
                 if 'content-file' not in product:
@@ -32,11 +38,14 @@ def make_app():
 
     settings = {
         "static_path": os.path.join(os.path.dirname(__file__), "css"),
+        "static_path_img": os.path.join(os.path.dirname(__file__), "images"),
     }
 
     return tornado.web.Application([
         (r"/", MainHandler),
         (r'/css/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path']}),
+        (r'/images/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_img']}),
+
     ], debug=True, **settings)
 
 
