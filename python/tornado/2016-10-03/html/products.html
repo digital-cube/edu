@@ -1,29 +1,50 @@
 {% extends "base.html" %}
 
 {% block slider %}
-  {% include 'slider.html' %}
+{% include 'header-cover.html' %}
 {% end %}
 
 {% block content %}
 
-  <div id="content">
-    <ul>
-      {% for product in products %}
-        <li style="background-color:{{ product['background-color']}}">
-          <div class="content">
-            <div class="with-img-{{product['image-pos']}}">
-              <div class="ctext">
-                <h1>{{ product['title'] }}</h1>
-                  {% raw product['content'] %}
-              </div>
-              <div class="cimg">
-                <img src="{{ product['image'] }}"/>
-              </div>
-            </div>
-          </div>
-        </li>
-      {% end %}
-    </ul>
-  </div>
-{% end %}
 
+<div class="product-container">
+  <div class="container-fluid">
+    <div class="row">
+      {% for product in products %}
+
+      <div class="product-box {{ product['bg-color'] }}-box">
+        <div class="gray-arrow"></div>
+        <div class="container">
+          <div class="row">
+
+            <div class="col-xs-12 col-md-6 col-lg-6 {{product['image-pos']}}">
+
+              <div class="img-cover ">
+                <img src="{{ product['image'] }}" class="img-responsive zoom-img" alt="Vogel image" title="Vogel image" />
+              </div>
+
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+
+              <div class="product-content">
+
+                <div class="title">{{ product['title'] }}</div>
+                {% raw product['content'] %}
+
+              </div>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+      {% end %}
+
+    </div>
+  </div>
+</div>
+
+  {% end %}

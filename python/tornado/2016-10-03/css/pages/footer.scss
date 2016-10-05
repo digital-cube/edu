@@ -1,0 +1,43 @@
+
+.sss{}
+#footer {
+    width:100%;
+    background-color: #00346b;
+    padding: 2em 0em;
+    float: left;
+    clear: both;
+
+
+    .address{
+        font-size: 1em;
+        color: white;
+        width: 8%;
+        float: left;
+        overflow: hidden;
+        margin: 1em 5em;
+    }
+    .phone{
+        color: white;
+        font-size: 1em;
+        margin: 1em 0.5em;
+        overflow: hidden;
+        float: left;
+
+    }
+    .navbar{
+        float: right;
+        margin: 1em 5em;
+
+        ul{
+            li{
+                float: left;
+                padding: 0 1em;
+                color: white;
+
+                a{
+                    color: white;
+                }
+            }
+        }
+    }
+}

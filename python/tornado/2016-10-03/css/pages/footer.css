@@ -1,0 +1,28 @@
+#footer {
+  width: 100%;
+  background-color: #00346b;
+  padding: 2em 0em;
+  float: left;
+  clear: both; }
+  #footer .address {
+    font-size: 1em;
+    color: white;
+    width: 8%;
+    float: left;
+    overflow: hidden;
+    margin: 1em 5em; }
+  #footer .phone {
+    color: white;
+    font-size: 1em;
+    margin: 1em 0.5em;
+    overflow: hidden;
+    float: left; }
+  #footer .navbar {
+    float: right;
+    margin: 1em 5em; }
+    #footer .navbar ul li {
+      float: left;
+      padding: 0 1em;
+      color: white; }
+      #footer .navbar ul li a {
+        color: white; }

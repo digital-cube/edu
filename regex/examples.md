@@ -13,5 +13,5 @@ Some of metacharacter examples:
 **Output**
 ```
     Hello World
-     has length >= 5.
+    has length >= 5.
 ```
