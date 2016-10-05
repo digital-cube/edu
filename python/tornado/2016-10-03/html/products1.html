@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block slider %}
+  {% include 'slider.html' %}
+{% end %}
+
+{% block content %}
+
+  <div id="content">
+    <ul>
+      {% for product in products %}
+        <li style="background-color:{{ product['background-color']}}">
+          <div class="content">
+            <div class="with-img-{{product['image-pos']}}">
+              <div class="ctext">
+                <h1>{{ product['title'] }}</h1>
+                  {% raw product['content'] %}
+              </div>
+              <div class="cimg">
+                <img src="{{ product['image'] }}"/>
+              </div>
+            </div>
+          </div>
+        </li>
+      {% end %}
+    </ul>
+  </div>
+{% end %}
+

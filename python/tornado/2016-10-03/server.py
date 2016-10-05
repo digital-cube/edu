@@ -3,7 +3,12 @@ import tornado.web
 import json
 import os
 
-
+class ContactHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render('html/contact.html')
+    
+    
+    
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
 
@@ -14,11 +19,11 @@ class MainHandler(tornado.web.RequestHandler):
         for product in products:
             nr += 1
             if 'image-pos' not in product:
-                product['image-pos'] = 'left'
+                product['image-pos'] = 'pull-left' if nr%2==1 else 'pull-right'
 
-            if 'background-color' not in product:
+            if 'bg-color' not in product:
 
-                product['background-color'] = '#fafafa' if nr%2==0 else 'white'
+                product['bg-color'] = 'gray' if nr%2==0 else 'white'
 
             if 'content' not in product:
                 if 'content-file' not in product:
@@ -38,12 +43,17 @@ def make_app():
 
     settings = {
         "static_path": os.path.join(os.path.dirname(__file__), "css"),
+        "static_path_pages": os.path.join(os.path.dirname(__file__), "css"),
+        "static_path_inc": os.path.join(os.path.dirname(__file__), "css"),
         "static_path_img": os.path.join(os.path.dirname(__file__), "images"),
     }
 
     return tornado.web.Application([
-        (r"/", MainHandler),
+        (r"/",MainHandler),
+        (r"/contact/?", ContactHandler),
         (r'/css/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path']}),
+        (r'/css/pages/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_pages']}),
+        (r'/css/inc/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_inc']}),
         (r'/images/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_img']}),
 
     ], debug=True, **settings)
