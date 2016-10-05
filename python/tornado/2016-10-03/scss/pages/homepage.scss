@@ -1,0 +1,105 @@
+@import '../inc/variables';
+
+
+
+.main-slider{
+    width:100%;
+    height:1700px;
+    position:relative;
+    margin-top:-200px;
+    .carousel-caption{text-shadow: none;top: 10%;left:8%;right:8%;}
+    .carousel-inner,.carousel-inner > .item > img,
+    .carousel-inner > .item > a > img { width: 100%; margin: auto; z-index: -1; }
+    .carousel-indicators { cursor: pointer; }
+
+    .slider-inside{
+        height: 900px;
+        .header-title{
+            font-size:24px;
+            background: $orange;
+            color:$white;
+            width:300px;
+            margin:auto;
+            outline:1px solid white;
+            margin-top:70px;
+            position:absolute;
+            left:0;right:0;
+            padding:10px 20px;
+        }
+        .text-content{
+            text-align: left;
+            margin:auto;
+            width:600px;
+            margin-top:200px;
+
+            h3 { font-size: 50px; color:$white; font-weight: 300;}
+            ul{
+
+                font-size: 50px;
+                color:$white;
+                font-weight: 300;
+
+                & li{
+                    color: $blue;
+                    list-style: none;
+                    position: relative;
+                    padding: 2px;
+                    color: $white;
+                    text-align: left;
+
+                    &:before{
+
+                        background: url(../../images/li-bg.png) no-repeat;
+                        content: "";
+                        width: 35px;
+                        height: 27px;
+                        left: -7px;
+                        top:10px;
+                        z-index: -1;
+                        background-size: contain;
+                        position: absolute;
+
+                    }
+
+                }
+
+            }
+
+
+        }
+        .more-products{
+            margin-top:100px;
+
+            height:550px;
+            background: rgba(255,255,255,0.7);
+            background: url("../../images/slide-bg-white.png");
+            padding:100px 50px;
+
+            .news-box{
+                .icons{position:relative;background: url(../../images/slide-news-icons.png) no-repeat;height: 110px; left:0; right:0px; margin:auto;}
+                .icon-0{width:80px;background-position:5px 0px; }
+                .icon-1{width:50px;background-position:-75px 0px;}
+                .icon-2{width:85px;background-position:-125px 0px;}
+                .title{font-size: 24px;text-transform:uppercase;text-align: center;color:$blue;}
+                p{font-size: 16px;text-align: left;color:$gray;height: 130px;}
+                .read-more{font-size: 14px;text-align: center;color:gray;
+                    &:after{background:url(../../images/read-more.png)no-repeat;width:35px;height:40px;position:absolute;content: "";margin-top:-10px;margin-left:15px;}
+                }
+
+            }
+
+        }
+    }
+
+}
+
+.home-news-section{ margin:100px 0px;background:$white;position:relative; height: 530px;
+    .title{font-size:24px;color:$orange;text-transform: uppercase;}
+    .img{margin:20px 0;}
+    img{width:100%; }
+    p{font-size: 16px;text-align: left;color:gray;width:100%;height: 130px;}
+    .read-more{margin-left:110px;font-size: 14px;text-align: center;color:gray;
+        &:after{background:url(../../images/read-more.png)no-repeat;width:35px;height:40px;position:absolute;content: "";margin-top:-10px;margin-left:15px;}
+    }
+
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block slider %}
+{% include 'slider.html' %}
+{% end %}
+
+{% block content %}
+
+
+  <!-- News section -->
+  <div class="home-news-section">
+  <div class="container">
+    <div class="row">
+      {% for n in news %}
+
+      <div class="col-xs-12 col-sm-12 col-md-4">
+        <div class="title">{{ n['title'] }}</div>
+        <div class="img">
+          <img src="{{ n['image']}}" alt="" title="" />
+        </div>
+        {% raw n['content'] %}
+        <a href="{{ n['url']}}" class="read-more">read more</a>
+      </div>
+
+      {% end %}
+    </div>
+  </div>
+</div>
+
+{% end %}
