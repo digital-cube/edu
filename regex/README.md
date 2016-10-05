@@ -13,6 +13,9 @@ Regular Expressions characterized:
  - set of metacharacters that form regular expressions
  - a set of rules to generate templates (patterns)
 
+
+
+
 Metacharacters are:
 ___________________
 
@@ -20,7 +23,7 @@ ___________________
     . ^ $ * + ? { } [ ] \ | ( )
 ```
 
-**Metacharacter**       **Meaning**
+**Metacharacter**---**Meaning**
 
 **[ ]** `Any character enclosed in the brackets [ ]. If metacharacters is within [ ] is treated as an ordinary character.`
 
@@ -28,7 +31,7 @@ ___________________
 
 **$** `End of input or row.`
 
-**\*/** `Previous character repeated 0 or more times.`
+**\*** `Previous character repeated 0 or more times.`
 
 **+** `Previous character repeated 1 or more times.`
 
@@ -46,8 +49,11 @@ ___________________
 
 **{ }** `The previous mark was repeated as defined within the brackets.`
 
-Predefined special sequences
-____________________________
+
+
+
+Predefined special sequences:
+_____________________________
 
 \w `Matches any character that is a letter, number or underscore (_).`
 
