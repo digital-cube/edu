@@ -1,0 +1,17 @@
+
+ul li {
+    float:left;
+    list-style-type: none;
+    margin-right:2em;
+    border:1px solid red;
+    padding:1em;
+    cursor:pointer;
+}
+
+.l2 {
+    display:none;
+}
+
+.selected {
+    background-color:lightblue;
+}
