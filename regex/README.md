@@ -90,7 +90,7 @@ If the function is successfully executed, the return *match* the objects you fin
 
 Function **search:**
 ```bash
-re.search(pattern, string, flags=0
+re.search(pattern, string, flags=0)
 ```
 
 **Match** function checks stacking comparing the start low, a **search** function checks the agreement anywhere in the text.
