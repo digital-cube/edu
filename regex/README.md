@@ -17,19 +17,16 @@ Regular Expressions characterized:
 
 
 Metacharacters are:
-___________________
 
 ```bash
     . ^ $ * + ? { } [ ] \ | ( )
 ```
 
-**Metacharacter**---**Meaning**
-
-**[ ]** `Any character enclosed in the brackets [ ]. If metacharacters is within [ ] is treated as an ordinary character.`
-
-**^** `Start input or row. If the character set in the [ ] starts with this symbol, it is a complementary set given.`
-
-**$** `End of input or row.`
+| Metacharacter     | Meaning       |
+|--------|:----------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| **[ ]**| `Any character enclosed in the brackets [ ]. If metacharacters is within [ ] is treated as an ordinary character.`|
+| **^** |`Start input or row. If the character set in the [ ] starts with this symbol, it is a complementary set given.`|
+| **$** |`End of input or row.`|
 
 **\*** `Previous character repeated 0 or more times.`
 
