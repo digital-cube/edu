@@ -1,7 +1,7 @@
-
+```html
 <h2>Some of metacharacter examples:<h2>
 
-<table border=1>
+<table>
     <tr>
         <td><b>Metacharacter(s)</b></td>
         <td><b>Description</b></td>
@@ -68,3 +68,4 @@ There is an 'H' and a 'e' separated by 0-1 characters (e.g., He Hue Hee).
         </td>
     </tr>
 </table>
+```
