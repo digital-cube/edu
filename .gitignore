@@ -1,5 +1,9 @@
+.sass-cache
 .idea
 *~
 *.pyc
 *node_modules*
 /npm-debug.log
+
+python/tornado/2016-10-03/**/*.css
+python/tornado/2016-10-03/**/*.css.map
