@@ -14,9 +14,9 @@ Regular Expressions characterized:
  - a set of rules to generate templates (patterns)
 
 
+___________________
 
-
-Metacharacters are:
+**Metacharacters are:**
 
 ```bash
     . ^ $ * + ? { } [ ] \ | ( )
@@ -40,8 +40,10 @@ Metacharacters are:
 
 
 
-Predefined special sequences:
+
 _____________________________
+
+**Predefined special sequences:**
 
 | Metacharacter | Meaning |
 |-----|:----------------------------------------------------------------:|
