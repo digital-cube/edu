@@ -67,3 +67,39 @@ _____________________________
 | \xxx | Finds the character specified by the octal number xxx.|
 | \xdd | Finds the character specified by the hexadecimal number dd.|
 | \uxxxx | Finds Unicode character specified by the hexadecimal number xxxx.|
+
+In Pathon module **re** there to support regular expressions, the use is imported.
+```bash
+>>>import re
+```
+Re module has the functions of which are the most important:
+**compile, findall, finditer, match, purge, search, split, sub, template.**
+
+
+Function **match:**
+```bash
+re.match(pattern, string, flags=0)
+```
+
+**pattern** is a regular expression that should be met.
+**string** the text of which is subject Search.
+**flags** is a set of modifiers that more closely describe the conditions search.
+
+
+If the function is successfully executed, the return *match* the objects you find. If you do not find any object that satisfies the condition *pattern* will return the value None.
+
+Function **search:**
+```bash
+re.search(pattern, string, flags=0
+```
+
+**Match** function checks stacking comparing the start low, a **search** function checks the agreement anywhere in the text.
+
+
+Function replacement (**sub**):
+```bash
+re.sub(pattern, repl, string, max=0)
+```
+
+Function replacement (**sub**) replaces all occurrences of **RE** template (sample) it finds in the low text **repl**. As a result, returns a modified string.
+
