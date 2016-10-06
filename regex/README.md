@@ -27,11 +27,11 @@ ___________________
 | **[ ]**| Any character enclosed in the brackets [ ]. If metacharacters is within [ ] is treated as an ordinary character.|
 | **^** | Start input or row. If the character set in the [ ] starts with this symbol, it is a complementary set given.|
 | **$** | End of input or row.|
-| **\*** | Previous character repeated 0 or more times.|
+| **\** | Previous character repeated 0 or more times.|
 | **+** | Previous character repeated 1 or more times.|
 | **?** | Previous character repeated 0 or 1 time. |
 | **.** | One character except  character for the transition in the new row.|
-| **|** | The choice between two regular expressions given by the left and right of the mark.|
+| \|/ | The choice between two regular expressions given by the left and right of the mark.|
 | **( )** | A group of characters which define the exact order of appearance.|
 | **-** | A group of characters in the range between the first and second, final.|
 | \ | The sign annulling the role of metacharacters and he is treated as an ordinary character.  If found in front of a particular character, form a predefined sequence.|
