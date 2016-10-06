@@ -10,6 +10,9 @@ $string1 = "Hello
  {
    print "$string1 has length >= 5.\n";
    }
-   ```    **Output**   ```
+   ```
+   **Output**
+
+   ```python
     Hello World
      has length >= 5. ```|
