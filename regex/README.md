@@ -43,6 +43,8 @@ Metacharacters are:
 Predefined special sequences:
 _____________________________
 
+| Metacharacter | Meaning |
+|-----|:----------------------------------------------------------------:|
 | \w | Matches any character that is a letter, number or underscore (_).|
 | \W  | Matches any character that is not a letter, number or underscore (_).|
 | \d | Finds numbers.|
