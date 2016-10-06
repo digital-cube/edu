@@ -1,7 +1,7 @@
 
 <h2>Some of metacharacter examples:<h2>
 
-<table>
+<table style="font-size:10px">
     <tr>
         <td><b>Metacharacter(s)</b></td>
         <td><b>Description</b></td>
