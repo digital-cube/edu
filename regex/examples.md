@@ -24,7 +24,7 @@ Hello World
         </td>
     </tr>
  <tr>
-        <td><b>( )</b></td>
+        <td>( )</td>
         <td>Groups a series of pattern elements to a single element.
 When you match a pattern within parentheses, you can use any of $1, $2, … later to refer to the previously matched pattern.</td>
         <td>
