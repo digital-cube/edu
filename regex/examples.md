@@ -1,4 +1,4 @@
-```html
+
 <h2>Some of metacharacter examples:<h2>
 
 <table border=1>
@@ -7,7 +7,6 @@
         <td><b>Description</b></td>
         <td><b>Example</b></td>
     </tr>
-
     <tr>
         <td><b>.</b></td>
         <td>Normally matches any character except a newline.
@@ -24,7 +23,6 @@ Hello World
         </pre>
         </td>
     </tr>
-
  <tr>
         <td><b>( )</b></td>
         <td>Groups a series of pattern elements to a single element.
@@ -69,6 +67,4 @@ There is an 'H' and a 'e' separated by 0-1 characters (e.g., He Hue Hee).
         </pre>
         </td>
     </tr>
-
 </table>
-```html
