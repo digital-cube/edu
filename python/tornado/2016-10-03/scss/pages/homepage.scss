@@ -1,5 +1,3 @@
-@import '../inc/variables';
-
 
 
 .main-slider{
@@ -32,15 +30,15 @@
             width:600px;
             margin-top:200px;
 
-            h3 { font-size: 50px; color:$white; font-weight: 300;}
+
+            h3 { font-size: 45px; color:$white; font-weight: 300;}
             ul{
 
-                font-size: 50px;
+                font-size: 45px;
                 color:$white;
                 font-weight: 300;
 
                 & li{
-                    color: $blue;
                     list-style: none;
                     position: relative;
                     padding: 2px;

@@ -13,5 +13,29 @@
 #header {
     z-index: 2;
     position: relative;
-    padding-top:30px;
+    padding-top: 30px;
+
+   #navbar {
+
+       ul {
+           > li {
+               a {
+                   color: $gray;
+
+                   &:hover {
+                       color: $blue;
+                       > a {
+                           color: $blue;
+                       }
+                   }
+                   &:active, &:focus {
+                       color: $blue;
+                       > a {
+                           color: $blue;
+                       }
+                   }
+               }
+           }
+       }
+   }
 }
