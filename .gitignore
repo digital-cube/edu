@@ -3,3 +3,4 @@
 *.pyc
 *node_modules*
 /npm-debug.log
+html/2016-10-07-material-css-html/opensms-reskin/css/*.css
