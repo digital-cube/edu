@@ -1,0 +1,197 @@
+<html>
+
+    <head>
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+        <script src="node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
+        <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+
+        <script>
+            $(document).ready(function () {
+                $.material.init();
+            });
+        </script>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <div class="btn logo">
+            </div>
+            <div class="languages navbar-header">
+                <div class="btn single_language current_language" id="lang_en">EN</div>
+                <div class="btn single_language" id="lang_en">DE</div>
+                <div class="btn single_language" id="lang_en">IT</div>
+                <!--<div class="single_language" id="lang_sr">SR</div>-->
+            </div>
+            <div class="btn logged-user">
+                <div class="left100p logged-user-image-wrapper">
+                    <div class="logged-user-image-in-circle">
+
+                    </div>
+                </div>
+                <div class="left100p logged-user-name-and-title">
+                    <div class="logged-user-name">Nebojsa Dolas</div>
+                    <div class="logged-user-title">+381695967576</div>
+                </div>
+                <div class="left100p logged-user-menu-credit">
+                    99.95 &euro;
+                </div>
+                <div class="left100p logged-user-menu-trigger">
+                </div>
+            </div>
+        </div>
+        <div class="content-with-sidebar">
+
+            <div class="sidebar">
+
+                <ul>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-dashboard"></div>
+                        <div class="sidebar-item-text">Dashboard</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-compose"></div>
+                        <div class="sidebar-item-text">Compose SMS</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-sent"></div>
+                        <div class="sidebar-item-text">Dashboard</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-contacts"></div>
+                        <div class="sidebar-item-text">Contacts</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-profile"></div>
+                        <div class="sidebar-item-text">Profile</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-add-credit"></div>
+                        <div class="sidebar-item-text">Add credit</div>
+                    </li>
+                    <li class="btn">
+                        <div class="sidebar-item" id="sidebar-admin"></div>
+                        <div class="sidebar-item-text">Admin</div>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="content-wrapper">
+
+
+                <hr/>
+                table:
+
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>
+                            select
+                        </th>
+                        <th>
+                            time
+                        </th>
+                        <th>
+                            from
+                        </th>
+                        <th>
+                            to
+                        </th>
+                        <th>
+                            text
+                        </th>
+                        <th>
+                            price
+                        </th>
+                        <th>
+                            status
+                        </th>
+                    </tr>
+
+                    <tr data-row-id="m00000OEC50rqupK" class="m00000OEC50rqupK footable-odd" style="display: table-row;">
+                        <td style="text-align: center"><span class="footable-toggle"></span class="footable-toggle">
+                            <input type="checkbox" name="msg[]" value="m00000OEC50rqupK" class="msg-checkbox">
+                        </td>
+                        <td class="open-sms" data-value="1474232604000">Sep 18, 2016, 11:03 PM</td>
+                        <td class="open-sms">381691234456</td>
+                        <td class="open-sms">+381691234456</td>
+                        <td class="open-sms">test</td>
+                        <td class="open-sms">0.19 €</td>
+                        <td class="open-sms sms-id-m00000OEC50rqupK hook-id-"><span class="label label-info">PENDING</span></td>
+                    </tr>
+                    <tr data-row-id="m00000OEC50rqupK" class="m00000OEC50rqupK footable-odd" style="display: table-row;">
+                        <td style="text-align: center"><span class="footable-toggle"></span class="footable-toggle">
+                            <input type="checkbox" name="msg[]" value="m00000OEC50rqupK" class="msg-checkbox">
+                        </td>
+                        <td class="open-sms" data-value="1474232604000">Sep 18, 2016, 11:03 PM</td>
+                        <td class="open-sms">381691234456</td>
+                        <td class="open-sms">+381691234456</td>
+                        <td class="open-sms">test</td>
+                        <td class="open-sms">0.19 €</td>
+                        <td class="open-sms sms-id-m00000OEC50rqupK hook-id-"><span class="label label-info">PENDING</span></td>
+                    </tr>
+                    <tr data-row-id="m00000OEC50rqupK" class="m00000OEC50rqupK footable-odd" style="display: table-row;">
+                        <td style="text-align: center"><span class="footable-toggle"></span class="footable-toggle">
+                            <input type="checkbox" name="msg[]" value="m00000OEC50rqupK" class="msg-checkbox">
+                        </td>
+                        <td class="open-sms" data-value="1474232604000">Sep 18, 2016, 11:03 PM</td>
+                        <td class="open-sms">381691234456</td>
+                        <td class="open-sms">+381691234456</td>
+                        <td class="open-sms">test</td>
+                        <td class="open-sms">0.19 €</td>
+                        <td class="open-sms sms-id-m00000OEC50rqupK hook-id-"><span class="label label-info">PENDING</span></td>
+                    </tr>
+                    <tr data-row-id="m00000OEC50rqupK" class="m00000OEC50rqupK footable-odd" style="display: table-row;">
+                        <td style="text-align: center"><span class="footable-toggle"></span class="footable-toggle">
+                            <input type="checkbox" name="msg[]" value="m00000OEC50rqupK" class="msg-checkbox">
+                        </td>
+                        <td class="open-sms" data-value="1474232604000">Sep 18, 2016, 11:03 PM</td>
+                        <td class="open-sms">381691234456</td>
+                        <td class="open-sms">+381691234456</td>
+                        <td class="open-sms">test</td>
+                        <td class="open-sms">0.19 €</td>
+                        <td class="open-sms sms-id-m00000OEC50rqupK hook-id-"><span class="label label-info">PENDING</span></td>
+                    </tr>
+                    <tr data-row-id="m00000OEC50rqupK" class="m00000OEC50rqupK footable-odd" style="display: table-row;">
+                        <td style="text-align: center"><span class="footable-toggle"></span class="footable-toggle">
+                            <input type="checkbox" name="msg[]" value="m00000OEC50rqupK" class="msg-checkbox">
+                        </td>
+                        <td class="open-sms" data-value="1474232604000">Sep 18, 2016, 11:03 PM</td>
+                        <td class="open-sms">381691234456</td>
+                        <td class="open-sms">+381691234456</td>
+                        <td class="open-sms">test</td>
+                        <td class="open-sms">0.19 €</td>
+                        <td class="open-sms sms-id-m00000OEC50rqupK hook-id-"><span class="label label-info">PENDING</span></td>
+                    </tr>
+
+                </table>
+
+
+                <hr/>
+
+                Compose message
+                <br/>
+
+                <div class="form-group label-floating">
+                    <label for="t1" class="control-label">Choose recepients</label>
+                    <input id="t1" class="form-control"/>
+                </div>
+                <div class="form-group label-floating">
+                    <textarea class="form-control sms-send-message-box" placeholder="Enter your message"></textarea>
+                </div>
+
+                <a href="javascript:void(0)" class="btn btn-raised btn-danger">Discard</a>
+                <a href="javascript:void(0)" class="btn btn-raised btn-primary">Send</a>
+
+
+
+            </div>
+
+       </div>
+    </body>
+
+</html>
+
+
+
