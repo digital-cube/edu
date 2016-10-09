@@ -55,16 +55,17 @@ class AboutHandler(tornado.web.RequestHandler):
 <a href="/">home</a>
 </body>
         ''')
-
-
     def patch(self):
         self.write("About me kroz PATCH")
+
+
 
 if __name__ == "__main__":
     app = tornado.web.Application([
         (r"/", MainHandler),
         (r"/about", AboutHandler),
+        (r"/kontakt",kontaktHandler),
     ], debug=True)
 
-    app.listen(8888)
+    app.listen(8808)
     tornado.ioloop.IOLoop.current().start()
