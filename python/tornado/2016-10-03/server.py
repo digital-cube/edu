@@ -51,6 +51,8 @@ class ProductsHandler(tornado.web.RequestHandler):
             if 'bg-color' not in product:
 
                 product['bg-color'] = 'gray' if nr%2==0 else 'white'
+                if nr == len(products):
+                    product['bg-color'] = 'none'
 
             if 'content' not in product:
                 if 'content-file' not in product:
@@ -70,6 +72,7 @@ def make_app():
 
     settings = {
         "static_path": os.path.join(os.path.dirname(__file__), "css"),
+        "static_path_js": os.path.join(os.path.dirname(__file__), "js"),
         "static_path_pages": os.path.join(os.path.dirname(__file__), "css"),
         "static_path_inc": os.path.join(os.path.dirname(__file__), "css"),
         "static_path_img": os.path.join(os.path.dirname(__file__), "images"),
@@ -79,6 +82,7 @@ def make_app():
         (r"/",HomeHandler),
         (r"/products/?",ProductsHandler),
         (r"/contact/?", ContactHandler),
+        (r'/js/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_js']}),
         (r'/css/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path']}),
         (r'/css/pages/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_pages']}),
         (r'/css/inc/(.*)', tornado.web.StaticFileHandler, {'path': settings['static_path_inc']}),

@@ -1,32 +1,130 @@
 <!-- Parallax slider -->
 
+<style type="text/css">
+
+    #wrapper {
+        position:relative;
+        padding:0px;
+        margin:100px;
+        height:1200px;
+        z-index: 1;
+
+    }
+    #slider {
+        height:1200px;
+        width:100%;
+        position:relative;
+        z-index: 1;
+
+    }
+    #slider .slides{position:relative;padding:0;margin:0;}
+    #slider .slides li img{
+        width:100%;
+        height:1200px;
+    }
+    .dots{position:absolute; text-align: center; bottom:20px; left:0; right: 0; margin:0 auto;}
+    .dots li{
+        position:relative;
+        list-style:none;
+        background:lightgray;
+        width:20px;
+        height:20px;
+        display:inline-block;
+        border-radius:50%;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.7) inset, 1px 1px 1px rgba(255,255,255,0.7);
+        margin:0 auto;
+        z-index:11;
+
+    }
+    #slider .slides li {
+        width:100%;
+        height:200px;
+        display:none;
+        padding:0px;
+        margin:0px;
+        top:0;
+        position:absolute;
+        list-style:none;
+    }
+
+    .sl{text-align:center;}
+    .sl-font-56{font-size: 56px;}
+    .sl-font-80{font-size: 80px;}
+    .sl-bold{font-weight: bold;}
+    /*.sl-content{*/
+        /*z-index: 1;*/
+        /*position: relative;*/
+        /*top:0;*/
+        /*left: 50%;*/
+        /*color: white;*/
+        /*text-shadow: gray;*/
+        /*width: 700px;*/
+        /*height: 200px;*/
+        /*margin-top: -450px;*/
+        /*margin-left: -350px;}*/
+        #slider-content{
+            padding-top:200px;
+        }
+</style>
 <div class="main-slider">
     <div class="container-fluid">
         <div class="row">
+            <div class="wrapper">
+                <div id="slider">
+                    <div class="slides-sm"></div>
 
+                    <ul class="slides">
+                        <li  id="1" >
+                            <img alt="start" src="http://awc.loc/wp-content/themes/avalonwellnessconsulting.com/images/img01.jpg">
+                        </li>
+                        <li  id="2">
+                            <img alt="2" src="http://awc.loc/wp-content/themes/avalonwellnessconsulting.com/images/img02.jpg">
+                        </li>
+                        <li id="3">
+                            <img  alt="3" src="http://awc.loc/wp-content/themes/avalonwellnessconsulting.com/images/img03.jpg">
+                        </li>
+                        <li id="4">
+                            <img  alt="4" src="http://awc.loc/wp-content/themes/avalonwellnessconsulting.com/images/img03.jpg">
+                        </li>
+                        <li id="5">
+                            <img  alt="5" src="http://awc.loc/wp-content/themes/avalonwellnessconsulting.com/images/img03.jpg">
+                        </li>
+                    </ul>
 
+                    <div id="slider-content" class="slider-inside">
+                        <div class="text-content">
+                            <h3>Wir stellen für die Branchen</h3>
+                            <ul>
+                                <li>der Pharma</li>
+                                <li>der Lebensmittel und</li>
+                                <li>der chemischen Industrie </li>
+                            </ul>
+                        </div>
+                        <div class="sm-box-content">
+                            <div class="header-title-sm">See more products</div>
 
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
+                            <div class="more-products-sm">
+                                <div class="news-box">
+                                    <div class="icons icon-0"></div>
+                                    <h2 class="title">Dienstleistungen</h2>
+                                    <div class="read-more"></div>
+                                </div>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="carousel-caption slider-inside">
-                            <div class="text-content">
-                                <h3>Wir stellen für die Branchen</h3>
-                                <ul>
-                                    <li>der Pharma</li>
-                                    <li>der Lebensmittel und</li>
-                                    <li>der chemischen Industrie </li>
-                                </ul>
+                                <div class="news-box">
+                                    <div class="icons icon-1"></div>
+                                    <h2 class="title">Produkte</h2>
+                                    <div class="read-more"></div>
+                                </div>
+                                <div class="news-box">
+                                    <div class="icons icon-2"></div>
+                                    <h2 class="title">Qualität / ISO / CE</h2>
+                                    <div class="read-more"></div>
+                                </div>
                             </div>
+
+                        </div>
+                        <div class="lg-box-content">
+
                             <div class="header-title">See more products</div>
 
                             <div class="more-products">
@@ -39,7 +137,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-4 ">
                                     <div class="news-box">
 
                                         <div class="icons icon-1"></div>
@@ -59,26 +157,19 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        <img src="../images/slide-0.png" alt="Chania">
                     </div>
 
-                    <!--<div class="item">-->
-                    <!--<img src="../static/images/slide-0.png" alt="Chania">-->
-                    <!--</div>-->
-
-                    <!--<div class="item">-->
-                    <!--<img src="../static/images/slide-0.png" alt="Flower">-->
-                    <!--</div>-->
-
-                    <!--<div class="item">-->
-                    <!--<img src="../static/images/slide-0.png" alt="Flower">-->
-                    <!--</div>-->
+                    <ul class="dots">
+                        <li data-id='1'></li>
+                        <li data-id='2'></li>
+                        <li data-id='3'></li>
+                        <li data-id='4'></li>
+                        <li data-id='5'></li>
+                    </ul>
                 </div>
-
-
             </div>
-
 
         </div>
     </div>
