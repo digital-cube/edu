@@ -67,11 +67,11 @@
                    padding-left:5px;
                    font-size:1em;
                    //font-weight: bold;
-
                    &:active,&:hover, &:focus {
                     color: $gray-ultradark;  text-decoration: none;
 
                        > a { color: $gray-ultradark; }
+
                }
            }
 

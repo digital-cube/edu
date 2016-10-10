@@ -4,6 +4,6 @@
 *.pyc
 *node_modules*
 /npm-debug.log
-
+html/2016-10-07-material-css-html/opensms-reskin/css/*.css
 python/tornado/2016-10-03/**/*.css
 python/tornado/2016-10-03/**/*.css.map
