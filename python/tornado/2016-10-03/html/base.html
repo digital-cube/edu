@@ -2,15 +2,39 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/main.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script  src="js/menu.js" ></script>
 
     <meta charset="UTF-8">
     <title>Vogel</title>
 </head>
 <body>
+
+<div class="nav-container" >
+    <ul>
+       {% include 'navbar.html' %}
+    </ul>
+</div>
+
+
+<section class="zid one white" >
+    <div class="wrap" style="position:fixed;">
+        <div class="advertisement">
+
+        </div>
+    </div>
+</section>
+<div id="overlay"></div>
+
+
 {% include 'header.html' %}
 {% block slider %}{% end %}
 {% block content %}{% end %}
 {% include 'footer.html' %}
+
+
 </body>
 </html>
