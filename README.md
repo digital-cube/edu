@@ -42,3 +42,16 @@ Python
   2. REST
   3. Class definitions
   4. Tornado web server example
+
+[2. 2016-09-30 - Tornado](https://github.com/digital-cube/edu/tree/master/python/tornado/2016-09-30)
+
+  1. TBD
+
+[3. 2016-10-03 - Tornado](https://github.com/digital-cube/edu/tree/master/python/tornado/2016-10-03)
+
+  1. TBD
+
+Javascript
+----------
+
+
