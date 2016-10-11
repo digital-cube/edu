@@ -1,16 +1,25 @@
 <div class="cruve"></div>
-    <div id="header">
-        <div class="logo">
+<div class="header-m" style="z-index:2;height: 100px;position:relative;padding:40px 40px;">
+        <div class="logo"style="position:fixed;z-index:101;right:40px;top:30px;float:right;">
             <img src="/images/logo.png"/>
-                <div class="navbar">
-                    <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">DIENSTLEISTUNGEN</a></li>
-                        <li><a href="#">ÜBER UNS</a></li>
-                        <li><a href="#">GESCHICHTE</a></li>
-                        <li><a href="#">ÖKOLOGIE</a></li>
-                        <li><a href="#">KONTAKT</a></li>
-                    </ul>
-                </div>
         </div>
-    </div>
+</div>
+<div id="header" class="container">
+        <div class="row">
+
+                <div class="col-md-3">
+                        <div class="logo">
+                            <img src="/images/logo.png"/>
+                        </div>
+                </div>
+                <div class="col-md-9">
+
+                    <nav id="navbar-pc">
+                            <ul class=" navbar-nav">
+                               {% include 'navbar.html' %}
+                            </ul>
+                        </nav>
+                </div>
+            </div>
+        </div>
+

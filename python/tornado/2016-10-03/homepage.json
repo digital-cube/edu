@@ -1,0 +1,20 @@
+[
+  {
+    "title": "News",
+    "content-file": "homenews/news1.html",
+    "image": "images/news-img-0.png",
+    "url": "#"
+  },
+  {
+    "title": "Verfahren",
+    "content-file": "homenews/news2.html",
+    "image": "images/news-img-1.png",
+    "url": "#"
+  },
+ {
+    "title": "Links",
+    "content-file": "homenews/news3.html",
+    "image": "images/news-img-2.png",
+    "url": "#"
+  }
+]

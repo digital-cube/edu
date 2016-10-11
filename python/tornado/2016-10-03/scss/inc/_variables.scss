@@ -1,0 +1,53 @@
+@import 'https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700';
+$body-size: 200px;
+$header-cover-bg-color: white;
+$body-bg-color: white;
+$white: white;
+$blue:#00346b;
+$gray:#c0c5cb;
+$gray-dark:#96999c;
+$gray-ultradark:#666666;
+$orange:#ef9b00;
+$font-hind: 'Hind';
+$gray-transparent:rgba(255,255,255,0.7);
+$height-1200:1200px;
+
+$xs-min: 320px;
+$xss-max: 460px;
+$xs-max: 767px;
+$sm-min: 768px;
+$sm-max: 991px;
+$md-min: 992px;
+$md-max: 1199px;
+$lg-min: 1200px;
+$ultra-lg-min: 1700px;
+$retina: 2200px;
+
+//xs only
+@media(max-width: $xs-max) {
+
+}
+//small and up
+@media(min-width: $sm-min) {
+
+}
+//sm only
+@media(min-width: $sm-min) and (max-width: $sm-max) {
+
+}
+//md and up
+@media(min-width: $md-min) {
+
+}
+//md only
+@media(min-width: $md-min) and (max-width: $md-max) {
+
+}
+//lg and up
+@media(min-width: $lg-min) {
+
+}
+//ultra lg and up
+@media(min-width: $ultra-lg-min) {
+
+}

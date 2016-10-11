@@ -1,0 +1,220 @@
+@import 'vars';
+
+body {
+	font-size:14px;
+	font-family: Roboto, Helvetica, Arial, sans-serif;
+
+	//background-image: url('../images/Telmekom.jpg');
+	//opacity: .5;
+	//background-repeat:no-repeat;
+
+	//width:1552px;
+	//height:864px;
+	background-color:white;
+
+}
+
+.left100p {
+	float:left;
+	height:100%;
+
+}
+
+.header {
+	border-bottom:1px solid darkgrey;
+
+	background-color:white;
+	//box-shadow: 10px 10px 5px #888888;
+
+	height:calc( #{$header-height} - 1px );
+	width:100%;
+	float:left;clear:left;
+
+
+	.logo {
+		float:left;
+		width: #{$logo-width};
+		height: 100%;
+		background-image: url('../images/telmekom-logo.png');
+		background-repeat: no-repeat;
+		background-position: center;
+		padding:0;
+		margin:0;
+		background-color: white;
+	}
+	.logo:hover {
+		background-color: white!important;
+	}
+
+
+	.logged-user {
+		float:right;
+		width: auto;
+		height: 100%;
+		padding:0;
+		margin:0;
+		background-color: white;
+
+		.logged-user-image-wrapper {
+			width:$logged-user-image-width;
+			.logged-user-image-in-circle {
+
+				margin-left:0.5em;
+				margin-top:0.5em;
+				width: calc(#{$logged-user-image-width} - 1em);
+				height: calc(#{$logged-user-image-width} - 1em);
+				border-radius:50%;
+
+				background-image: url('../images/aca.png');
+				background-size: calc(#{$logged-user-image-width} - 1em);
+			}
+		}
+		.logged-user-name-and-title {
+			min-width:$logged-user-name-width;
+			padding: 0 0.5em;
+
+			.logged-user-name {
+				padding-top: calc( #{$header-height} / 2 - 1.2em);
+				font-size:1em;
+				color:black;
+				text-align:left;
+			}
+			.logged-user-title {
+				font-size:0.8em;
+				color:gray;
+				text-align:left;
+			}
+		}
+		.logged-user-menu-credit {
+			font-size:2em;
+			padding-top: calc(#{$header-height} / 2 - 0.8em);
+		}
+		.logged-user-menu-trigger {
+			width:$logged-user-menu-trigger-width;
+			border-color: #00bcd4;
+			background-image: url('../images/ic_keyboard_arrow_down_black_48px.svg');
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+	.logged-user:hover {
+		background-color: white!important;
+	}
+
+	.languages {
+		float:right;
+		width: auto;
+		height: 100%;
+
+		.current_language {
+			background-color: $background-for-active-element;
+		}
+
+		.single_language {
+			width: $single_language_width;
+			height: 100%;
+			float:left;
+			border-left:1px solid darkgrey;
+			text-align: center;
+			padding: calc(#{$header-height} / 2 - 0.8em) 0 0 0;
+			cursor:pointer;
+			margin: 0;
+		}
+
+		.single_language:hover {
+			color: $on-hover-color;
+		}
+
+	}
+
+
+}
+
+.content-with-sidebar {
+	height:calc(100% - #{$header-height});
+	background-color:darkgrey;
+	width:100%;
+	float:left;clear:left;
+
+	.sidebar {
+		background-color: rgb(41,56,70);
+		float:left;
+		width: #{$sidebar-width};
+		height:100%;
+
+		overflow-y:hidden;
+
+		ul {
+			li {
+				padding:0;
+				margin:0;
+				.sidebar-item-text {
+					display:block;
+					text-transform: uppercase;
+					clear:left;
+					color:#a7b1c2;
+					font-size:0.8em;
+				}
+
+				width:100%;
+				height:105px;
+				border-bottom:1px solid darkgray;
+
+				.sidebar-item {
+					height:80px;
+					clear:left;
+					display:block;
+					width:100%;
+					float:left;
+					clear:left;
+					margin:0;
+					padding:0;
+					background-position: center;
+					background-repeat: no-repeat;
+					opacity: 0.5;
+				}
+
+				#sidebar-dashboard {
+					background-image: url('../images/ic_dashboard_black_48px.svg');
+				}
+				#sidebar-compose {
+					background-image: url('../images/ic_textsms_black_48px.svg');
+				}
+				#sidebar-sent {
+					background-image: url('../images/ic_playlist_add_check_black_48px.svg');
+				}
+				#sidebar-contacts {
+					background-image: url('../images/ic_contacts_black_48px.svg');
+				}
+				#sidebar-profile {
+					background-image: url('../images/ic_person_black_48px.svg');
+				}
+				#sidebar-add-credit {
+					background-image: url('../images/ic_euro_symbol_black_48px.svg');
+				}
+				#sidebar-admin {
+					background-image: url('../images/ic_supervisor_account_black_48px.svg');
+				}
+
+			}
+		}
+
+	}
+
+	.content-wrapper {
+		background-color: white;
+		float:right;
+		overflow:auto;
+
+		padding:1em;
+
+		width: calc(100% - #{$sidebar-width});
+		height:100%;
+
+
+
+		.sms-send-message-box {
+			height:5em;
+		}
+	}
+}
