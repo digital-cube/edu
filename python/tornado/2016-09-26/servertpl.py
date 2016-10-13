@@ -18,7 +18,7 @@ class TemplateHandler(tornado.web.RequestHandler):
 
         self.render("index-tpl.html",
                     title="My title",
-                    items=["Item 1", "Item 2", "Item 3", "Item 4"])
+                    items=["Item 1", "Item 2", "Item 3", "Item 4","Item 4","Item 4","Item 4","Item 4"])
 
 
 def make_app():

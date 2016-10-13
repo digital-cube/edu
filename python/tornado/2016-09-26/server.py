@@ -29,7 +29,9 @@ DELETE http://api.example.com/users/u00000912
 import tornado.ioloop
 import tornado.web
 
+
 class MainHandler(tornado.web.RequestHandler):
+
     def get(self):
         self.write('''
 <head>
@@ -43,9 +45,13 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 class AboutHandler(tornado.web.RequestHandler):
+
     def post(self):
+
         self.write("About me kroz POST")
+
     def get(self):
+
         self.write('''
 <head>
   <title>Demo APP</title>
@@ -55,7 +61,9 @@ class AboutHandler(tornado.web.RequestHandler):
 <a href="/">home</a>
 </body>
         ''')
+
     def patch(self):
+
         self.write("About me kroz PATCH")
 
 
@@ -64,8 +72,8 @@ if __name__ == "__main__":
     app = tornado.web.Application([
         (r"/", MainHandler),
         (r"/about", AboutHandler),
-        (r"/kontakt",kontaktHandler),
-    ], debug=True)
+        # (r"/kontakt", kontaktHandler),
+        ], debug=True)
 
     app.listen(8808)
     tornado.ioloop.IOLoop.current().start()
