@@ -5,3 +5,4 @@ for n in range(3,1000):
     elif n % 5 == 0:
         total += n
 print(total)
+print(op)

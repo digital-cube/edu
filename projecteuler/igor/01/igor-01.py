@@ -12,5 +12,20 @@ def i1(limit):
 
     return s
 
+def i2(limit):
+    total = 0
+    for n in range(3, 1000, 3):
+        total += n
+
+    for n in range(5, 1000, 5):
+        total += n
+
+    for n in range(15, 1000, 3 * 5):
+        total -= n
+
+    return total
+
 print (i1(10))
 print (i1(1000))
+print (i2(10))
+print (i2(1000))
