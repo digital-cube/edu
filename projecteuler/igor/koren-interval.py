@@ -1,5 +1,9 @@
 '''
 
+ovo je najjednostavnija metoda sa trazenje korena, koriscenjem izvoda mozete to uraditi u mnogo manje koraka
+
+
+
 koren(2):
 
 znamo da je koren(2)>0, i znamo da je koren(2)<2 => polovicemo interval izmedju 0 i 2
