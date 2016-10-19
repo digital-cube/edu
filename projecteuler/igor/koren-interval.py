@@ -52,10 +52,11 @@ def koren(x, delta = 0.00001):
         return metoda_koren(x , min ,max)
 
 
-    return round(metoda_koren(x, 0, x),5)
+    return metoda_koren(x, 0, x)
 
-for i in range(1,10):
-    print(i,koren(i,delta=0.00000000001))
+
+for i in range(1, 10):
+    print(i, koren(i, delta=0.00000000001))
 
 
 
