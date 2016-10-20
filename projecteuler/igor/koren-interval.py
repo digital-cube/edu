@@ -32,11 +32,14 @@ y:-1     0.25
 '''
 
 
-def koren(x, delta = 0.00001):
+poziva = 0
+def koren(x, delta = 0.00000001):
 
 
     def metoda_koren(x, min, max):
 
+        global poziva
+        poziva+=1
 
         if max-min < delta:
             return (max+min)/2
@@ -55,8 +58,7 @@ def koren(x, delta = 0.00001):
     return metoda_koren(x, 0, x)
 
 
-for i in range(1, 10):
-    print(i, koren(i, delta=0.00000000001))
+print(koren(2), poziva)
 
-
-
+1.414213564246893
+1.4142135623746899
