@@ -38,8 +38,8 @@ To adjust the working environment for JUnit testing of your code follow these st
 - Right click on current project directory, then select "New", then select "Directory", and then enter new directory name (for example "tests")
 - Click to "File", then select "Project Structure" (Ctrl+Alt+Shift+S)
 - Select "Modules", then select "tests" directory, then select Tests flag and then OK.
--
-![alt tag](https://raw.githubusercontent.com/digital-cube/edu/master/git/2016-09-23-git/git.png)
+
+![alt tag](https://github.com/digital-cube/edu/blob/master/java/JUnit_Test_In_IntelliJ_IDEA/junit01.PNG)
 
 ### Creating test class
 
