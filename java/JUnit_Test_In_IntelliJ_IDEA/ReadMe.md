@@ -137,7 +137,7 @@ The Timeout Rule applies the same timeout to all test methods in a class, and wi
 ```
 ### Run test with Coverage
 Viewing code coverage helps you detect pieces of your source code that are not affected by simulation.
-![alt tag](https://raw.githubusercontent.com/digital-cube/edu/master/git/2016-09-23-git/git.png)
+![alt tag](https://github.com/digital-cube/edu/blob/master/java/JUnit_Test_In_IntelliJ_IDEA/junit02.PNG)
   
 
 
