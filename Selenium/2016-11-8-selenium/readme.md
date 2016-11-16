@@ -64,6 +64,17 @@ Selenium IDE gives you the ability to export your tests to number of popular pro
 Groovy, Perl, PHP, Python and Ruby.
 You can also debuging your tests, [debuging] (http://www.ministryoftesting.com/2011/05/debugging-tests-in-selenium-ide/).
 
+
+
+
+
+
+
+
+
+
+##Selenium IDE Example##
+
 ![Selenium IDE Example](https://raw.githubusercontent.com/digital-cube/edu/master/Selenium/2016-11-8-selenium/seleniumide.png)
 
 ##Command, Target, and Value##
