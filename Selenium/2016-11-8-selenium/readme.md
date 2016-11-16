@@ -2,8 +2,7 @@
 
 
 
-     Selenium IDE (*Integrated Development Environment*) is an automated testing tool that is released as a Firefox plug-in.
-
+Selenium IDE (Integrated Development Environment) is an automated testing tool that is released as a Firefox plug-in.
 
 **Benefits:** The most impressive aspect of using selenium IDE is that the user is not required to possess any prior programming knowledge. The minimum that the user needs is the little knowing with HTML, DOMS and JavaScript
 
@@ -22,15 +21,15 @@ The Selenium API defines many of commands that can be categorized into the follo
 - **Assertions**
 
 **Actions** are commands that change the state of the application like clicking links or buttons, select an option in a <select> or type a character sequence in a given
-textbox.
-**Accessors** inspect the state of the application and store values in variables.
+textbox
+**Accessors** inspect the state of the application and store values in variables
 **Assertions** come in three ways
 
-	1. *assert* - if assertion fails, test is aborted and marked as failed : assertTitle(pattern) will fail if the title of the page doesn'T correspond to the pattern argument
+1.*assert* - if assertion fails, test is aborted and marked as failed : assertTitle(pattern) will fail if the title of the page doesn'T correspond to the pattern argument
 
-	2. *verify* - if a verification fails, the test doesn’t stop but a trace will be printed in the log
+2.*verify* - if a verification fails, the test doesn’t stop but a trace will be printed in the log
 
-	3. *waitFor* - these commands pause the test until a condition is satisfied or a
+3.*waitFor* - these commands pause the test until a condition is satisfied or a
 timeout is reached
 
 ##Types of locators##
