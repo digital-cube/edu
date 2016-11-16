@@ -68,7 +68,7 @@ You can also debuging your tests, [debuging] (http://www.ministryoftesting.com/2
 
 ##Command, Target, and Value##
 
-The **Command**, **Target**, and **Value** entry fields display the currently selected command along with its parameters.
+The **Command**, **Target**, and **Value** entry fields display the currently selected command along with its parameters
 1. Command, Target, and Value
 	* Command is the action that we wish to perform This field having all commands list for selenium ide.
 2. Target
