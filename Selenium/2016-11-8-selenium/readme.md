@@ -25,7 +25,8 @@ Accessors inspect the state of the application and store values in variables
 
 Assertions come in three ways:
 
-1. **assert** - if assertion fails, test is aborted and marked as failed : assertTitle(pattern) will fail if the title of the page doesn'T correspond to the pattern argument
+1. **assert** - if assertion fails, test is aborted and marked as failed : assertTitle(pattern) will fail if the title of the page doesn't
+correspond to the pattern argument
 
 2. **verify** - if a verification fails, the test doesn’t stop but a trace will be printed in the log
 
@@ -37,19 +38,23 @@ timeout is reached
 
 By:
 1. ID
+
 2. Name
+
 3. Link Text
+
 4. CSS Selector
-* Tag and ID
-* Tag and class
-* Tag and attribute
-* Tag, class, and attribute
-* Inner text
+    * Tag and ID
+    * Tag and class
+    * Tag and attribute
+    * Tag, class, and attribute
+    * Inner text
+
 5. DOM (Document Object Model)
-* getElementById
-* getElementsByName
-* dom:name
-* dom: index
+    * getElementById
+    *getElementsByName
+    * dom:name
+    * dom: index
 6. Xpath
 
 More information can be found from link given here [locators-in-selenium-ide] (http://www.guru99.com/locators-in-selenium-ide.html).
