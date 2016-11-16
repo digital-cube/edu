@@ -1,8 +1,10 @@
-total = 0
-for n in range(3,1000):
-    if n % 3 == 0:
-        total += n
-    elif n % 5 == 0:
-        total += n
-print(total)
-print(op)
+
+import unittest
+
+class SimplisticTest(unittest.TestCase):
+
+    def test(self):
+        self.assertTrue(True)
+
+if __name__ == '__main__':
+    unittest.main()
