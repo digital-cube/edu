@@ -34,9 +34,8 @@ correspond to the pattern argument
 timeout is reached
 
 
-##Types of locators##
+##Types of locators by:##
 
-By:
 1. ID
 
 2. Name
@@ -58,3 +57,9 @@ By:
 6. Xpath
 
 More information can be found from link given here [locators-in-selenium-ide] (http://www.guru99.com/locators-in-selenium-ide.html).
+
+**Firebug**, helps us in inspecting HTML, CSS and JavaScript elements on a web page. For better use Selenium IDE we need to install Firebug, [Download Firebug](https://getfirebug.com/downloads).
+
+Selenium IDE gives you the ability to export your tests to number of popular programming languages, including Java, C#,
+Groovy, Perl, PHP, Python and Ruby.
+You can also debuging your tests, [debuging] (http://www.ministryoftesting.com/2011/05/debugging-tests-in-selenium-ide/).
