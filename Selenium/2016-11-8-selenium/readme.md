@@ -63,3 +63,19 @@ More information can be found from link given here [locators-in-selenium-ide] (h
 Selenium IDE gives you the ability to export your tests to number of popular programming languages, including Java, C#,
 Groovy, Perl, PHP, Python and Ruby.
 You can also debuging your tests, [debuging] (http://www.ministryoftesting.com/2011/05/debugging-tests-in-selenium-ide/).
+
+![Selenium IDE Example](https://raw.githubusercontent.com/digital-cube/edu/master/Selenium/2016-11-8-selenium/seleniumide.png)
+
+##Command, Target, and Value##
+
+The Command, Target, and Value entry fields display the currently selected command along with its parameters.
+1.Command, Target, and Value
+	*Command is the action that we wish to perform This field having all commands list for selenium ide.
+2.Target
+	*Target is used to identify webelement on the webpage. There are different way to locating elements on the webpage like locating by Id, locating by Name,locating by XPath, locating Hyperlinks by Link Text, locating by CSS
+3.Value
+	*this field is simple value, stored on that recorded webelement during recording or we can set new value for second run of the testcase.
+
+
+
+
