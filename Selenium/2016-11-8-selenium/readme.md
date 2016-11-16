@@ -51,7 +51,7 @@ timeout is reached
 
 5. DOM (Document Object Model)
     * getElementById
-    *getElementsByName
+    * getElementsByName
     * dom:name
     * dom: index
 6. Xpath
@@ -68,13 +68,13 @@ You can also debuging your tests, [debuging] (http://www.ministryoftesting.com/2
 
 ##Command, Target, and Value##
 
-The Command, Target, and Value entry fields display the currently selected command along with its parameters.
+The **Command**, **Target**, and **Value** entry fields display the currently selected command along with its parameters.
 1. Command, Target, and Value
-	*Command is the action that we wish to perform This field having all commands list for selenium ide.
+	* Command is the action that we wish to perform This field having all commands list for selenium ide.
 2. Target
-	*Target is used to identify webelement on the webpage. There are different way to locating elements on the webpage like locating by Id, locating by Name,locating by XPath, locating Hyperlinks by Link Text, locating by CSS
+	* Target is used to identify webelement on the webpage. There are different way to locating elements on the webpage like locating by Id, locating by Name,locating by XPath, locating Hyperlinks by Link Text, locating by CSS
 3. Value
-	*this field is simple value, stored on that recorded webelement during recording or we can set new value for second run of the testcase.
+	* this field is simple value, stored on that recorded webelement during recording or we can set new value for second run of the testcase.
 
 
 
