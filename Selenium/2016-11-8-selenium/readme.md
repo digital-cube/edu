@@ -20,10 +20,11 @@ The Selenium API defines many of commands that can be categorized into the follo
 - **Accessors**
 - **Assertions**
 
-Actions are commands that change the state of the application like clicking links or buttons,
-select an option in a select or type a character sequence in a given textbox
-Accessors inspect the state of the application and store values in variables
-Assertions come in three ways
+..*Actions are commands that change the state of the application like clicking links or buttons
+
+..*Accessors inspect the state of the application and store values in variables
+
+..*Assertions come in three ways:
 
 1. *assert* - if assertion fails, test is aborted and marked as failed : assertTitle(pattern) will fail if the title of the page doesn'T correspond to the pattern argument
 
