@@ -18,7 +18,7 @@ def parse_result(res_str):
 
     res_str = res_str.replace(' ', '')
 
-    ftht = res_str.split('(');
+    ftht = res_str.split('(')
     if len(ftht) != 2:
         return False, 'INVALID_ARGUMENTS'
 
@@ -179,3 +179,4 @@ def run_tests():
 
 if __name__=="__main__":
     run_tests()
+
