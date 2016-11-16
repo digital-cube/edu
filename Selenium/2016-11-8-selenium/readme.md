@@ -94,4 +94,59 @@ The **Command**, **Target**, and **Value** entry fields display the currently se
 
 
 
+##Log/Reference/UI-Element/Rollup Pane##
+
+![Selenium IDE Example](https://raw.githubusercontent.com/digital-cube/edu/master/Selenium/2016-11-8-selenium/seleniumide2.png)
+
+
+The bottom pane is used for four different functions–Log, Reference, UI-Element, and Rollup–depending on which tab is selected.
+
+**LOG**
+
+When you run your test case, error messages and information messages showing the progress are displayed in this pane automatically,
+even if you do not first select the log tab. These messages are often useful for test case debugging. Notice the Clear button for clearing the Log.
+Also notice the Info button is a drop-down allowing selection of different levels of information to log.
+
+
+
+**Reference**
+
+![Selenium IDE Example](https://raw.githubusercontent.com/digital-cube/edu/master/Selenium/2016-11-8-selenium/seleniumide1.png)
+
+The Reference tab is the default selection whenever you are entering or modifying Selenese commands and parameters in Table mode.
+In Table mode, the Reference pane will display documentation on the current command.
+When entering or modifying commands, whether from Table or Source mode, it is critically important to ensure that the parameters specified in the
+Target and Value fields match those specified in he parameter list in the Reference pane. The number of parameters provided must match the number
+specified, the order of parameters provided must match the order specified, and the type of parameters provided must match the type specified.
+If there is a mismatch in any of these three areas, the command will not run correctly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
