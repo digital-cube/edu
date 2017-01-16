@@ -6,7 +6,7 @@ PROBLEM: izracunati broj dana izmedju dva datuma
 ULAZ : prvi datum, drugi datum
 IZLAZ: broj dana
 
-USLOVI: prvi datum je uvek u vremenu koje dolazi nakon drugog datuma
+USLOVI: drugi datum je uvek u vremenu koje dolazi nakon prvog datuma
 
 SMERNICE: ne koristimo nijednu biblioteku
 

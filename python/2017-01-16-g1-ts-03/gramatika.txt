@@ -67,6 +67,13 @@ Linux = DC / Linux
 
 YACC - Yet Another Compiler Compiler
 
+primer gramatika jezika C
+https://www.lysator.liu.se/c/ANSI-C-grammar-y.html
+
+primer gramatika jezika Python
+https://docs.python.org/3/reference/grammar.html
+
+
 GCC - GNU Compiler Collection
 GCC - GNU C Compiler
 
