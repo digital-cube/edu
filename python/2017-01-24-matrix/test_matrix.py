@@ -93,16 +93,57 @@ class TestMatrix(unittest.TestCase):
 
         self.assertEqual(C.data, [[13, 17, 9, 17, 9], [19, 24, 13, 26, 13]])
 
-    def tm2(self):
-        '''
-            generisati ove dve matrice
+    def test_multiplicate2(self):
 
-            https://www.dropbox.com/s/8443rhsjm0rszo4/Screenshot%202017-01-25%2010.35.17.png?dl=0
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
+        B = matrix.Matrix(5, 7, [[1, 2, 3, 4, 5, 6, 7], [2, 3, 4, 5, 6, 7, 8], [3, 4, 5, 6, 7, 8, 9],
+                                 [4, 5, 6, 7, 8, 9, 0], [5, 6, 7, 8, 9, 0, 1]])
+        C = matrix.Matrix.multiplicate(A, B)
 
-            pomnoziti i proveriti rezultat:
+        self.assertEqual(C.data, [[55, 70, 85, 100, 115, 80, 55],
+                                  [130, 170, 210, 250, 290, 230, 180],
+                                  [205, 270, 335, 400, 465, 380, 305],
+                                  [280, 370, 460, 550, 640, 530, 430]])
 
-            https://www.dropbox.com/s/kyhm60o51o3vp70/Screenshot%202017-01-25%2010.36.10.png?dl=0
-        '''
+    def test_multiply_row_and_add_to_row(self):
+
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
+
+        with self.assertRaises(matrix.InvalidRow):
+            A.multiply_row_and_add_to_row(3, 2, 25)
+
+        with self.assertRaises(matrix.InvalidRow):
+            A.multiply_row_and_add_to_row(35, 2, 2)
+
+        with self.assertRaises(matrix.InvalidInputDataType):
+            A.multiply_row_and_add_to_row(2, 'X', 3)
+
+        with self.assertRaises(matrix.InvalidInputDataType):
+            A.multiply_row_and_add_to_row(2, 2, 2)
+
+        A.multiply_row_and_add_to_row(0, -6, 1)
+        self.assertEqual( A.data, [[1, 2, 3, 4, 5], [0, -5, -10, -15, -20], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
+
+
+    def test_swap_rows(self):
+
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
+        A.swap_rows(2, 3)
+        self.assertEqual(A.data, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [16, 17, 18, 19, 20], [11, 12, 13, 14, 15]])
+
+    # def test_gaus1(self):
+    #
+    #     A = matrix.Matrix(4, 5, [[2, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
+    #
+    #     A.gaus1(0)
+    #     print(A)
+    #     A.gaus1(1)
+    #     print(A)
+    #     A.gaus1(2)
+    #     print(A)
+
+
+        # A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [0, 5, 8, 9, 10], [0, 12, 13, 14, 15], [0, 17, 18, 19, 20]])
 
 
 class TestSquareMatrix(unittest.TestCase):
@@ -113,5 +154,11 @@ class TestSquareMatrix(unittest.TestCase):
         self.assertEqual(M.get_width(), 3)
         self.assertEqual(M.get_height(), 3)
 
+
+    def test_matrix_multiplication(self):
+        A = matrix.SquareMatrix(3, [[1, 2, 3], [2, 2, 2], [3, 3, 3]])
+        B = matrix.SquareMatrix(3, [[4, 4, 4], [5, 6, 7], [6, 6, 6]])
+        C = matrix.SquareMatrix.multiplicate(A, B)
+        self.assertEqual(C.data, [[32, 34, 36], [30, 32, 34], [45, 48, 51]])
 
 
