@@ -133,62 +133,74 @@ def days_between_two_dates(y1, m1, d1, y2, m2, d2):
 
 if __name__ == "__main__":
 
-    assert not is_year_leap(2014)
-    assert is_year_leap(2016)
-    assert is_year_leap(2000)
-    assert not is_year_leap(2100)
+    cy, cm, cd = 2017, 1, 18
+    ty, tm, td = 1976, 1, 1
+    tcy, tcm, tcd = cy, tm, td
 
-    assert days_in_month(2016, 1) == 31
-    assert days_in_month(2016, 2) == 29
-    assert days_in_month(2017, 2) == 28
-    assert days_in_month(2100, 2) == 28
-    assert days_in_month(2000, 2) == 29
-    assert days_in_month(2400, 2) == 29
+    if is_valid_date_order(cy, cm, cd, tcy, tcm, tcd):
+        days_to_persons_birthday = days_between_two_dates(cy, cm, cd, tcy, tcm, tcd)
+        will_celbrate_birthday_nr = cy - ty
+    else:
+        days_to_persons_birthday = days_between_two_dates(cy, cm, cd, tcy + 1, tcm, tcd)
+        will_celbrate_birthday_nr = cy - ty + 1
 
-    assert is_valid_date(2017, 1, 16)
-    assert not is_valid_date(2017, 1, 32)
-    assert not is_valid_date(2017, 4, 31)
-    assert is_valid_date(2016, 2, 29)
-    assert is_valid_date(2004, 2, 29)
-    assert not is_valid_date(2100, 2, 29)
-    assert not is_valid_date(2100, 2, 0)
-    assert not is_valid_date(2100, 0, 10)
-    assert not is_valid_date(2100, 13, 10)
-    assert not is_valid_date(-22, 2, 29)
+    print('dana do {} rodjendana ove osobe ima: {}'.format(will_celbrate_birthday_nr, days_to_persons_birthday))
 
-    assert not is_valid_date_order(2016, 1, 26, 2016, 1, 16)
-    assert is_valid_date_order(2016, 1, 26, 2016, 2, 16)
-    assert not is_valid_date_order(2016, 5, 12, 2016, 4, 16)
-    assert not is_valid_date_order(2016, 5, 20, 2016, 5, 16)
-    assert is_valid_date_order(2016, 2, 26, 2016, 5, 16)
-    assert not is_valid_date_order(2016, 2, 126, 2016, 5, 16)
-    assert not is_valid_date_order(-5, 1, 16, 2016, 1, 17)
-    assert not is_valid_date_order(2015, 1, 16, -6, 1, 17)
-    assert is_valid_date_order(2015, 5, 12, 2016, 4, 16)
-    assert not is_valid_date_order(2018, 5, 12, 2016, 4, 16)
+    # print ( days_between_two_dates(ty, tm, td, cy, cm, cd) )
 
-    assert next_day(2017, 1, 16) == (2017, 1, 17)
-    assert next_day(2016, 1, 31) == (2016, 2, 1)
-    assert next_day(2016, 10, 31) == (2016, 11, 1)
-    assert next_day(2016, 12, 31) == (2017, 1, 1)
-    assert next_day(2016, 2, 29) == (2016, 3, 1)
-    assert next_day(2000, 12, 31) == (2001, 1, 1)
-    assert next_day(2000, 10, 5) == (2000, 10, 6)
-    assert next_day(1999, 12, 31) == (2000, 1, 1)
-
-    assert days_between_two_dates(2017, 1, 16, 2017, 1, 17) == 1
-    assert days_between_two_dates(2016, 1, 16, 2016, 1, 20) == 4
-    assert days_between_two_dates(2011, 1, 16, 2016, 1, 20) == 1830
-    assert days_between_two_dates(2011, 1, 16, 2016, 1, 20) == 1830
-    assert days_between_two_dates(1, 1, 7, 2017, 1, 16) == 736338
-    assert days_between_two_dates(1976, 8, 24, 2017, 1, 16) == 14755
-    assert days_between_two_dates(1992, 12, 11, 2017, 1, 16) == 8802
-    assert days_between_two_dates(1991, 4, 23, 2017, 1, 16) == 9400
-    assert days_between_two_dates(1980, 8, 13, 2017, 1, 16) == 13305
-    assert days_between_two_dates(1983, 11, 27, 2017, 1, 16) == 12104
-    assert days_between_two_dates(1993, 3, 24, 2017, 1, 16) == 8699
-
-
-
-
+    # assert not is_year_leap(2014)
+    # assert is_year_leap(2016)
+    # assert is_year_leap(2000)
+    # assert not is_year_leap(2100)
+    #
+    # assert days_in_month(2016, 1) == 31
+    # assert days_in_month(2016, 2) == 29
+    # assert days_in_month(2017, 2) == 28
+    # assert days_in_month(2100, 2) == 28
+    # assert days_in_month(2000, 2) == 29
+    # assert days_in_month(2400, 2) == 29
+    #
+    # assert is_valid_date(2017, 1, 16)
+    # assert not is_valid_date(2017, 1, 32)
+    # assert not is_valid_date(2017, 4, 31)
+    # assert is_valid_date(2016, 2, 29)
+    # assert is_valid_date(2004, 2, 29)
+    # assert not is_valid_date(2100, 2, 29)
+    # assert not is_valid_date(2100, 2, 0)
+    # assert not is_valid_date(2100, 0, 10)
+    # assert not is_valid_date(2100, 13, 10)
+    # assert not is_valid_date(-22, 2, 29)
+    #
+    # assert not is_valid_date_order(2016, 1, 26, 2016, 1, 16)
+    # assert is_valid_date_order(2016, 1, 26, 2016, 2, 16)
+    # assert not is_valid_date_order(2016, 5, 12, 2016, 4, 16)
+    # assert not is_valid_date_order(2016, 5, 20, 2016, 5, 16)
+    # assert is_valid_date_order(2016, 2, 26, 2016, 5, 16)
+    # assert not is_valid_date_order(2016, 2, 126, 2016, 5, 16)
+    # assert not is_valid_date_order(-5, 1, 16, 2016, 1, 17)
+    # assert not is_valid_date_order(2015, 1, 16, -6, 1, 17)
+    # assert is_valid_date_order(2015, 5, 12, 2016, 4, 16)
+    # assert not is_valid_date_order(2018, 5, 12, 2016, 4, 16)
+    #
+    # assert next_day(2017, 1, 16) == (2017, 1, 17)
+    # assert next_day(2016, 1, 31) == (2016, 2, 1)
+    # assert next_day(2016, 10, 31) == (2016, 11, 1)
+    # assert next_day(2016, 12, 31) == (2017, 1, 1)
+    # assert next_day(2016, 2, 29) == (2016, 3, 1)
+    # assert next_day(2000, 12, 31) == (2001, 1, 1)
+    # assert next_day(2000, 10, 5) == (2000, 10, 6)
+    # assert next_day(1999, 12, 31) == (2000, 1, 1)
+    #
+    # assert days_between_two_dates(2017, 1, 16, 2017, 1, 17) == 1
+    # assert days_between_two_dates(2016, 1, 16, 2016, 1, 20) == 4
+    # assert days_between_two_dates(2011, 1, 16, 2016, 1, 20) == 1830
+    # assert days_between_two_dates(2011, 1, 16, 2016, 1, 20) == 1830
+    # assert days_between_two_dates(1, 1, 7, 2017, 1, 16) == 736338
+    # assert days_between_two_dates(1976, 8, 24, 2017, 1, 16) == 14755
+    # assert days_between_two_dates(1992, 12, 11, 2017, 1, 16) == 8802
+    # assert days_between_two_dates(1991, 4, 23, 2017, 1, 16) == 9400
+    # assert days_between_two_dates(1980, 8, 13, 2017, 1, 16) == 13305
+    # assert days_between_two_dates(1983, 11, 27, 2017, 1, 16) == 12104
+    # assert days_between_two_dates(1993, 3, 24, 2017, 1, 16) == 8699
+    #
 
