@@ -1,0 +1,74 @@
+def valid_ip_helper(ip):
+
+    try:
+
+        aip = [int(i) for i in ip.split('.')]
+        if len(aip) != 4:
+            return False
+
+        for i in aip:
+            if i < 0 or i > 255:
+                return False
+
+    except Exception as e:
+
+        return False
+
+    return aip
+
+def valid_ip(ip):
+
+    return valid_ip_helper(ip) != False
+
+def valid_netmask(ip):
+
+    aip = valid_ip_helper(ip)
+
+    if not aip:
+        return False
+
+    sizes = {'255': 8, '254': 7, '252': 6, '248': 5, '240': 4, '224': 3, '192': 2, '128': 1, '0': 0}
+
+    last_found_size = -1
+    for i in aip:
+        if str(i) not in sizes:
+            return False
+
+        s = sizes[str(i)]
+
+        if last_found_size != -1 and (last_found_size != 8 and s != 0):
+            return False
+
+        last_found_size = s
+
+    return True
+
+
+if __name__=="__main__":
+
+
+    assert valid_ip("127.0.0.1")
+    assert valid_ip("127.0.0.3")
+    assert valid_ip("192.168.1.1")
+    assert not valid_ip("223.a.b.c")
+    assert not valid_ip("")
+    assert not valid_ip("1.2.333")
+    assert not valid_ip("1.2.3.4.5.6")
+    assert not valid_ip("192.168.333.123")
+    assert not valid_ip("www.ooblife.com")
+
+    assert valid_netmask("255.255.255.255")
+    assert valid_netmask("0.0.0.0")
+    assert valid_netmask("255.0.0.0")
+    assert valid_netmask("255.255.0.0")
+    assert valid_netmask("255.255.255.0")
+    assert valid_netmask("255.255.255.254")
+    assert valid_netmask("255.255.254.0")
+    assert valid_netmask("255.254.0.0")
+    assert valid_netmask("255.255.192.0")
+    assert valid_netmask("128.0.0.0")
+    assert not valid_netmask("255.255.3.0")
+    assert not valid_netmask("255.255.0.255")
+    assert not valid_netmask("255.255.128.255")
+    assert not valid_netmask("255.255.254.255")
+
