@@ -93,7 +93,7 @@ class TestMatrix(unittest.TestCase):
 
         self.assertEqual(C.data, [[13, 17, 9, 17, 9], [19, 24, 13, 26, 13]])
 
-    def tm2(self):
+    def test_m2(self):
         '''
             generisati ove dve matrice
 
@@ -103,6 +103,44 @@ class TestMatrix(unittest.TestCase):
 
             https://www.dropbox.com/s/kyhm60o51o3vp70/Screenshot%202017-01-25%2010.36.10.png?dl=0
         '''
+
+        # DA = []
+        # DB = []
+        # A = matrix.Matrix(4, 5, DA)
+        # B = matrix.Matrix(5,2, DB)
+        # s = 1
+        #
+        # for row in range(A.get_height()):
+        #     DAl=[]
+        #     for col in range(A.get_width()):
+        #         DAl.append(s)
+        #         s+=1
+        #     DA.append(DAl)
+        # print(DA)
+        #
+        # for row in range(B.get_height()):
+        #     DBl = []
+        #     for col in range(B.get_width()):
+        #         DBl.append(s)
+        #         s+=1
+        #     DB.append(DBl)
+        #
+        # print("DB vrednost\n")
+        # print(DB)
+        # C = matrix.Matrix.multiplicate(A, B)
+        # self.assertEqual(C.get_height(), A.get_height())
+        # self.assertEqual(C.get_width(), B.get_width())
+        # self.assertEqual(C.data, [[395, 410], [1020, 1060],[1645, 1710],[2270, 2360]])
+
+
+
+        # kraci primer
+        DA=[]
+
+        for row in range(4):
+            DA.append([5*row+i+1 for i in range(5)])
+        print(DA)
+
 
 
 class TestSquareMatrix(unittest.TestCase):
