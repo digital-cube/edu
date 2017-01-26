@@ -1,0 +1,147 @@
+body {
+  font-size: 14px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: white; }
+
+.left100p {
+  float: left;
+  height: 100%; }
+
+.header {
+  border-bottom: 1px solid darkgrey;
+  background-color: white;
+  height: calc( 80px - 1px );
+  width: 100%;
+  float: left;
+  clear: left; }
+  .header .logo {
+    float: left;
+    width: 250px;
+    height: 100%;
+    background-image: url("../images/telmekom-logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0;
+    margin: 0;
+    background-color: white; }
+  .header .logo:hover {
+    background-color: white !important; }
+  .header .logged-user {
+    float: right;
+    width: auto;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: white; }
+    .header .logged-user .logged-user-image-wrapper {
+      width: 80px; }
+      .header .logged-user .logged-user-image-wrapper .logged-user-image-in-circle {
+        margin-left: 0.5em;
+        margin-top: 0.5em;
+        width: calc(80px - 1em);
+        height: calc(80px - 1em);
+        border-radius: 50%;
+        background-image: url("../images/aca.png");
+        background-size: calc(80px - 1em); }
+    .header .logged-user .logged-user-name-and-title {
+      min-width: 200px;
+      padding: 0 0.5em; }
+      .header .logged-user .logged-user-name-and-title .logged-user-name {
+        padding-top: calc( 80px / 2 - 1.2em);
+        font-size: 1em;
+        color: black;
+        text-align: left; }
+      .header .logged-user .logged-user-name-and-title .logged-user-title {
+        font-size: 0.8em;
+        color: gray;
+        text-align: left; }
+    .header .logged-user .logged-user-menu-credit {
+      font-size: 2em;
+      padding-top: calc(80px / 2 - 0.8em); }
+    .header .logged-user .logged-user-menu-trigger {
+      width: 50px;
+      border-color: #00bcd4;
+      background-image: url("../images/ic_keyboard_arrow_down_black_48px.svg");
+      background-repeat: no-repeat;
+      background-position: center; }
+  .header .logged-user:hover {
+    background-color: white !important; }
+  .header .languages {
+    float: right;
+    width: auto;
+    height: 100%; }
+    .header .languages .current_language {
+      background-color: lightgray; }
+    .header .languages .single_language {
+      width: 50px;
+      height: 100%;
+      float: left;
+      border-left: 1px solid darkgrey;
+      text-align: center;
+      padding: calc(80px / 2 - 0.8em) 0 0 0;
+      cursor: pointer;
+      margin: 0; }
+    .header .languages .single_language:hover {
+      color: green; }
+
+.content-with-sidebar {
+  height: calc(100% - 80px);
+  background-color: darkgrey;
+  width: 100%;
+  float: left;
+  clear: left; }
+  .content-with-sidebar .sidebar {
+    background-color: #293846;
+    float: left;
+    width: 97px;
+    height: 100%;
+    overflow-y: hidden; }
+    .content-with-sidebar .sidebar ul li {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 105px;
+      border-bottom: 1px solid darkgray; }
+      .content-with-sidebar .sidebar ul li .sidebar-item-text {
+        display: block;
+        text-transform: uppercase;
+        clear: left;
+        color: #a7b1c2;
+        font-size: 0.8em; }
+      .content-with-sidebar .sidebar ul li .sidebar-item {
+        height: 80px;
+        clear: left;
+        display: block;
+        width: 100%;
+        float: left;
+        clear: left;
+        margin: 0;
+        padding: 0;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.5; }
+      .content-with-sidebar .sidebar ul li #sidebar-dashboard {
+        background-image: url("../images/ic_dashboard_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-compose {
+        background-image: url("../images/ic_textsms_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-sent {
+        background-image: url("../images/ic_playlist_add_check_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-contacts {
+        background-image: url("../images/ic_contacts_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-profile {
+        background-image: url("../images/ic_person_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-add-credit {
+        background-image: url("../images/ic_euro_symbol_black_48px.svg"); }
+      .content-with-sidebar .sidebar ul li #sidebar-admin {
+        background-image: url("../images/ic_supervisor_account_black_48px.svg"); }
+  .content-with-sidebar .content-wrapper {
+    background-color: white;
+    float: right;
+    overflow: auto;
+    padding: 1em;
+    width: calc(100% - 97px);
+    height: 100%; }
+    .content-with-sidebar .content-wrapper .sms-send-message-box {
+      height: 5em; }
+
+/*# sourceMappingURL=main.css.map */

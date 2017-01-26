@@ -4,8 +4,16 @@ class InvalidDataDimensions(Exception):
 class InvalidMatrixDimensions(Exception):
     pass
 
+class InvalidRow(Exception):
+    pass
+
+class InvalidColumn(Exception):
+    pass
 
 class InvalidDataType(Exception):
+    pass
+
+class InvalidInputDataType(Exception):
     pass
 
 
@@ -43,6 +51,15 @@ class Matrix(object):
 
     def get_data(self):
         return self.data
+
+    def __str__(self):
+        res = ''
+        for r in range(self.height):
+            for c in range(self.width):
+                res+='{:5} '.format(self.data[r][c])
+            res+='\n'
+
+        return res
 
     ## Static methods
 
@@ -91,6 +108,41 @@ class Matrix(object):
         self.height = T.height
         self.data = T.data
 
+    def multiply_row_and_add_to_row(self, source_row, x, destination_row):
+
+        if source_row == destination_row:
+            raise InvalidInputDataType
+
+        if source_row < 0 or source_row >= self.height:
+            raise InvalidRow
+
+        if destination_row < 0 or destination_row >= self.height:
+            raise InvalidRow
+
+        if type(x) not in (type(1), type(1.0)):
+            raise InvalidInputDataType
+
+        for c in range(self.width):
+            self.data[destination_row][c] += self.data[source_row][c] * x
+
+    def swap_rows(self, row1, row2):
+
+        if row1 == row2:
+            raise InvalidInputDataType
+
+        if row1 < 0 or row1 >= self.height:
+            raise InvalidRow
+
+        if row2 < 0 or row2 >= self.height:
+            raise InvalidRow
+
+        self.data[row1], self.data[row2] = self.data[row2], self.data[row1]
+
+    def gaus1(self, d):
+
+        for row in range(d+1,self.height):
+            x = -1 * self.data[row][d] / self.data[d][d]
+            self.multiply_row_and_add_to_row(d, x, row)
 
 class SquareMatrix(Matrix):
 
