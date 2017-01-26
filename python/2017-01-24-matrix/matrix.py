@@ -16,6 +16,9 @@ class InvalidDataType(Exception):
 class InvalidInputDataType(Exception):
     pass
 
+class NotPossibleToMakeLeftLowerTriangle(Exception):
+    pass
+
 
 class Matrix(object):
 
@@ -56,8 +59,11 @@ class Matrix(object):
         res = ''
         for r in range(self.height):
             for c in range(self.width):
-                res+='{:5} '.format(self.data[r][c])
-            res+='\n'
+                x = self.data[r][c]
+                if abs(x)<0.00001:
+                    x = 0
+                res += '{:5} '.format(round(x,2))
+            res += '\n'
 
         return res
 
@@ -138,11 +144,53 @@ class Matrix(object):
 
         self.data[row1], self.data[row2] = self.data[row2], self.data[row1]
 
-    def gaus1(self, d):
+    def make_zeros_below_diagonal(self):
+        m = min(self.width, self.height)
+        for d in range(0, m):
+            self.make_zeros_below_diagonal_at_d(d)
+
+
+    def make_zeors_before_diagonal_at_d(self, d):
+
+        if self.data[d][d] == 0:
+            swapped = False
+            for row in range(d-1, 0, -1):
+                if self.data[row][d] != 0:
+                    self.swap_rows(d, row)
+                    swapped = True
+                    break
+
+            if not swapped:
+                raise NotPossibleToMakeLeftLowerTriangle
+
+
+        for row in range(d-1, -1, -1):
+            x = -1 * self.data[row][d] / self.data[d][d]
+            self.multiply_row_and_add_to_row(d, x, row)
+
+    def make_zeros_below_diagonal_at_d(self, d):
+
+        if self.data[d][d] == 0:
+            swapped = False
+            for row in range(d+1,self.height):
+                if self.data[row][d] != 0:
+                    self.swap_rows(d, row)
+                    swapped = True
+                    break
+
+            if not swapped:
+                raise NotPossibleToMakeLeftLowerTriangle
+
 
         for row in range(d+1,self.height):
             x = -1 * self.data[row][d] / self.data[d][d]
             self.multiply_row_and_add_to_row(d, x, row)
+
+    # TODO: Make unit tests for this
+    def make_upper_zero_triangle_for_first_square_sub_matrix(self):
+        m = min(self.width, self.height)
+        for d in range(m - 1, 0, -1):
+            self.make_zeors_before_diagonal_at_d(d)
 
 class SquareMatrix(Matrix):
 
@@ -154,3 +202,34 @@ class SquareMatrix(Matrix):
 
     def get_dimension(self):
         return self.get_height()
+
+    def make_upper_zero_triangle(self):
+        for d in range(self.width - 1, 0, -1):
+            self.make_zeors_before_diagonal_at_d(d)
+
+    def invert(self):
+
+        M = Matrix(self.height, self.width * 2)
+
+        for row in range(self.height):
+            for col in range(self.width):
+                M.data[row][col] = self.data[row][col]
+            M.data[row][row+self.width] = 1
+
+        M.make_zeros_below_diagonal()
+
+        M.make_upper_zero_triangle_for_first_square_sub_matrix()
+
+        for row in range(M.height):
+            x = M.data[row][row]
+            if x!=1:
+                for c in range(row, M.width):
+                    M.data[row][c] /= x
+
+        I = SquareMatrix(self.height)
+
+        for row in range(self.height):
+            for col in range(self.width-1, M.width):
+                I.data[row][col-self.width] = M.data[row][col]
+
+        self.data = I.data

@@ -131,19 +131,38 @@ class TestMatrix(unittest.TestCase):
         A.swap_rows(2, 3)
         self.assertEqual(A.data, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [16, 17, 18, 19, 20], [11, 12, 13, 14, 15]])
 
-    # def test_gaus1(self):
-    #
-    #     A = matrix.Matrix(4, 5, [[2, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
-    #
-    #     A.gaus1(0)
-    #     print(A)
-    #     A.gaus1(1)
-    #     print(A)
-    #     A.gaus1(2)
-    #     print(A)
+    def test_make_zeros_below_diagonal_at_d_fail1(self):
+        A = matrix.Matrix(4, 5, [[0, 2, 3, 4, 5], [0, 7, 8, 9, 10], [0, 12, 13, 14, 15], [0, 17, 18, 19, 20]])
+
+        with self.assertRaises(matrix.NotPossibleToMakeLeftLowerTriangle):
+            A.make_zeros_below_diagonal_at_d(0)
+
+    def test_make_zeors_before_diagonal_at_d(self):
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5],[2, 2, 2, 2, 5],[3, 3, 4, 5, 6],[2, 2, 3, 0, 5]])
+
+        print(A)
+        A.make_zeors_before_diagonal_at_d(3)
+
+        print(A)
+
+    def test_make_zeros_below_diagonal_at_d_1(self):
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5],[2, 2, 2, 2, 5],[3, 3, 4, 5, 6],[2, 2, 3, 4, 5]])
+        A.make_zeros_below_diagonal_at_d(0)
+        self.assertEqual(A.data, [[1, 2, 3, 4, 5], [0, -2, -4, -6, -5], [0, -3, -5, -7, -9],[0, -2, -3, -4, -5]])
+
+    # TODO: refaktorisati tako da radi ispravan donji trooguao, jer smo
+    # TODO: zakljucili da pravimo donji trapez a to nije trougao
+    def test_make_zeros_below_diagonal(self):
+        A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [2, 2, 2, 2, 5], [3, 3, 4, 2, 6], [2, 2, 3, 4, 5]])
+        A.make_zeros_below_diagonal()
 
 
-        # A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [0, 5, 8, 9, 10], [0, 12, 13, 14, 15], [0, 17, 18, 19, 20]])
+    def test_make_zeros_below_diagonal(self):
+        A = matrix.Matrix(4, 8, [[2, 3, 1, 1, 2, 3, 4, 5], [2, 2, 2, 5, 2, 1, 2, 5], [3, 3, 4, 2, 2, 1, 3, 6], [2, 2, 3, 4, 5, 1, 1.2, 1.5]])
+        A.transpose()
+        print(A)
+        A.make_zeros_below_diagonal()
+        print(A)
 
 
 class TestSquareMatrix(unittest.TestCase):
@@ -161,4 +180,86 @@ class TestSquareMatrix(unittest.TestCase):
         C = matrix.SquareMatrix.multiplicate(A, B)
         self.assertEqual(C.data, [[32, 34, 36], [30, 32, 34], [45, 48, 51]])
 
+    def test_lower_zero_triangle(self):
+        A = matrix.SquareMatrix(3, [[1, 2, 3], [2, 2, 2], [4, 3, 3]])
+        A.make_zeros_below_diagonal()
+        self.assertEqual(A.data, [[1, 2, 3,], [0, -2, -4], [0, 0, 1]])
 
+
+    def test_upper_zero_triangle(self):
+        A = matrix.SquareMatrix(3, [[1, 2, 3], [1, 3, 2], [4, 3, 3]])
+        print(A)
+
+        # TODO: ova funkcija, je implementirana samo na sqm
+        # TODO: pomerite njenu implementaciju na matricu
+        # TODO: po uradjenom poslu. brisite je iz squer matrice i moraju svi testovi
+        # TODO: da prodju
+
+        A.make_upper_zero_triangle()
+        print(A)
+
+    def test_invert(self):
+
+        A = matrix.SquareMatrix(3, [[1, 2, 7], [3, 2, 5], [1, 5, 2]])
+        B = matrix.SquareMatrix(3, [[1, 2, 7], [3, 2, 5], [1, 5, 2]])
+
+        print(A)
+        A.invert()
+
+        print(A)
+
+        C = matrix.Matrix.multiplicate(A, B)
+
+        print(C)
+
+    def test_invert2(self):
+
+        A = matrix.SquareMatrix(4, [[1, 2, 7, 1], [3, 2, 2, 5], [1, 11, 5, 2], [5, 21, 5, 1]])
+        B = matrix.SquareMatrix(4, [[1, 2, 7, 1], [3, 2, 2, 5], [1, 11, 5, 2], [5, 21, 5, 1]])
+
+        print(A)
+        A.invert()
+
+        print(A)
+
+        C = matrix.Matrix.multiplicate(A, B)
+
+        print(C)
+
+    def test_invert3_stress(self):
+
+        #NOTE: u testu nikada ne sme da se koristi rand funkcija
+
+        import random
+
+        dim = 10
+
+        data = []
+        data2 = []
+        for row in range(dim):
+            r = [random.randint(0,100) for _ in range(dim)]
+            data.append(r)
+            data2.append(r[:])
+
+        A = matrix.SquareMatrix(dim, data=data)
+        B = matrix.SquareMatrix(dim, data=data2)
+
+        print(A)
+
+        A.invert()
+
+        print(A)
+
+        C = matrix.Matrix.multiplicate(A, B)
+
+        print(C)
+
+
+        # print(A)
+        # A.invert()
+        #
+        # print(A)
+        #
+        # C = matrix.Matrix.multiplicate(A, B)
+        #
+        # print(C)
