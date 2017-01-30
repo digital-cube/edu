@@ -93,13 +93,7 @@ class TestMatrix(unittest.TestCase):
 
         self.assertEqual(C.data, [[13, 17, 9, 17, 9], [19, 24, 13, 26, 13]])
 
-    def test_m2(self):
-        '''
-            generisati ove dve matrice
-
-        '''
     def test_multiplicate2(self):
-
 
         A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]])
         B = matrix.Matrix(5, 7, [[1, 2, 3, 4, 5, 6, 7], [2, 3, 4, 5, 6, 7, 8], [3, 4, 5, 6, 7, 8, 9],
@@ -161,7 +155,7 @@ class TestMatrix(unittest.TestCase):
     def test_make_zeros_below_diagonal(self):
         A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [2, 2, 2, 2, 5], [3, 3, 4, 2, 6], [2, 2, 3, 4, 5]])
         A.make_zeros_below_diagonal()
-        print(A.make_zeros_below_diagonal)
+
 
     def test_make_zeros_below_diagonal(self):
         A = matrix.Matrix(4, 8, [[2, 3, 1, 1, 2, 3, 4, 5], [2, 2, 2, 5, 2, 1, 2, 5], [3, 3, 4, 2, 2, 1, 3, 6], [2, 2, 3, 4, 5, 1, 1.2, 1.5]])
@@ -169,44 +163,6 @@ class TestMatrix(unittest.TestCase):
         print(A)
         A.make_zeros_below_diagonal()
         print(A)
-
-        # DA = []
-        # DB = []
-        # A = matrix.Matrix(4, 5, DA)
-        # B = matrix.Matrix(5,2, DB)
-        # s = 1
-        #
-        # for row in range(A.get_height()):
-        #     DAl=[]
-        #     for col in range(A.get_width()):
-        #         DAl.append(s)
-        #         s+=1
-        #     DA.append(DAl)
-        # print(DA)
-        #
-        # for row in range(B.get_height()):
-        #     DBl = []
-        #     for col in range(B.get_width()):
-        #         DBl.append(s)
-        #         s+=1
-        #     DB.append(DBl)
-        #
-        # print("DB vrednost\n")
-        # print(DB)
-        # C = matrix.Matrix.multiplicate(A, B)
-        # self.asgit sertEqual(C.get_height(), A.get_height())
-        # self.assertEqual(C.get_width(), B.get_width())
-        # self.assertEqual(C.data, [[395, 410], [1020, 1060],[1645, 1710],[2270, 2360]])
-
-
-
-        # kraci primer
-        DA=[]
-
-        for row in range(4):
-            DA.append([5*row+i+1 for i in range(5)])
-        print(DA)
-
 
 
 class TestSquareMatrix(unittest.TestCase):
