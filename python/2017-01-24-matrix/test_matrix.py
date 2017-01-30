@@ -161,7 +161,7 @@ class TestMatrix(unittest.TestCase):
     def test_make_zeros_below_diagonal(self):
         A = matrix.Matrix(4, 5, [[1, 2, 3, 4, 5], [2, 2, 2, 2, 5], [3, 3, 4, 2, 6], [2, 2, 3, 4, 5]])
         A.make_zeros_below_diagonal()
-
+        print(A.make_zeros_below_diagonal)
 
     def test_make_zeros_below_diagonal(self):
         A = matrix.Matrix(4, 8, [[2, 3, 1, 1, 2, 3, 4, 5], [2, 2, 2, 5, 2, 1, 2, 5], [3, 3, 4, 2, 2, 1, 3, 6], [2, 2, 3, 4, 5, 1, 1.2, 1.5]])
