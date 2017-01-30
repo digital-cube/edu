@@ -232,7 +232,7 @@ class TestSquareMatrix(unittest.TestCase):
 
         import random
 
-        dim = 10
+        dim = 50
 
         data = []
         data2 = []
