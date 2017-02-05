@@ -26,23 +26,27 @@ class Article(Base):
 
      id = Column(String(10), primary_key=True)
      slug = Column(String, unique=True)
-     title = Column(String, unique=True)
-     id_category = Column(String, unique=False)
-     number_of_likes = Column(Integer, unique=False)
-     number_of_comments = Column(Integer, unique=False)
+     title = Column(String, unique=False)
+     id_category = Column(String, unique=False, default=None)
+     id_user = Column(String)
+     content = Column(String)
+     number_of_likes = Column(Integer)
+     number_of_comments = Column(Integer)
 
-     def __init__(self, id, slug, title, id_category, number_of_likes, number_of_comments):
+     def __init__(self, id, slug, title, id_category, id_user, content):
          self.id = id
          self.slug = slug
          self.title = title
+         self.id_user = id_user
+         self.content = content
          self.id_category = id_category
-         self.number_of_likes = number_of_likes
-         self.number_of_comments = number_of_comments
+         # self.number_of_likes = number_of_likes
+         # self.number_of_comments = number_of_comments
 
 
      def __repr__(self):
-        return "<Article(slug='{}',title='{}',id_category='{}',number_of_likes='{}',number_of_comments='{}')>".format(
-            self.slug, self.title, self.id_category, self.number_of_likes, self.number_of_comments)
+        return "<Article(slug='{}',title='{}',id_category='{}',id_user='{}',)>".format(
+            self.slug, self.title, self.id_category, self.id_user)
 
 
 class Tags(Base):
