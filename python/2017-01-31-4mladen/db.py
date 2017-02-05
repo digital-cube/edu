@@ -1,10 +1,19 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
+import string
 
 engine = create_engine('sqlite:///:memory:', echo=False)
 Base = declarative_base()
 
 from sqlalchemy import Column, Integer, String, SmallInteger, Boolean, Text, DateTime
+
+
+class SequencerTypeError(NameError):
+    pass
+
+
+class ToManyAttemptsException(NameError):
+    pass
 
 
 class User(Base):
@@ -142,7 +151,6 @@ class Sequencer(Base):
         self.s_table = s_table
         self.ordered = ordered
 
-
 class s_users(Base):
     __tablename__ = 's_users'
 
@@ -182,8 +190,6 @@ class s_hash_2_params(Base):
         self.active_stage = active_stage
 
 
-
-
 Base.metadata.create_all(engine)
 
 from sqlalchemy.orm import sessionmaker
@@ -201,4 +207,3 @@ for _s in [
 
     session.add(_seq)
 session.commit()
-
