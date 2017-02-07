@@ -1,0 +1,30 @@
+                    select * from users where username='aca'
+
+ORIGINALNA TABELA KOJA SADRZI DODATNE INFORMACIJE
+
+    1. munira      ime: munira, prezime: hasanagic, pol: zensko, rodjendan: 1992-12-11 zvanje: it inzenjer
+    2. ivan
+    3. igor
+    4. mladen
+    5. andrija
+    6. aca
+    7. aleksandar
+    8. pera
+    9. zika
+    10. laza
+    11. goran
+    12. marinko
+    13. sloba
+    14. ivan
+    15. mika
+    16. trta
+    17. steva
+    18. nenad
+    19. jovan
+    20. slavisa
+
+INDEX po imenu:
+
+aca aleksandar andrija goran igor ivan ivan jovan laza marinko mika mladen munira nenad pera slavisa sloba steva trta zika
+
+
