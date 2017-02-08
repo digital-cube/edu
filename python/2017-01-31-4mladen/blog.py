@@ -2,7 +2,7 @@ import db
 import sqlalchemy.exc
 from sqlalchemy import select
 
-
+#EXCEPTIONS
 class UserDoesntExist(BaseException):
     pass
 
@@ -54,6 +54,7 @@ class TitleNotValidException(BaseException):
 class ArticleDoesntExist(BaseException):
     pass
 
+
 class TagsDoesntExist(BaseException):
     pass
 
@@ -70,6 +71,14 @@ class CommentAlreadyExistsException(BaseException):
     pass
 
 
+class IdCategoryDoesntExist(BaseException):
+    pass
+
+class ArticleEditException(BaseException):
+    pass
+
+
+#METHODS - Helpers
 def check_email(email):
 
     not_allowed_char = ('<', '>', '{', '}', '%', '#',
@@ -100,7 +109,6 @@ def check_email(email):
         if email.find(i) != -1:
             raise EmailNotValidException
 
-
 def check_slug_and_title(string):
     not_allowed_char = ('<', '>', '{', '}', '%', '#',
                         '!', '*', '(', ')', '+', '=',
@@ -115,12 +123,10 @@ def check_slug_and_title(string):
 
     return True
 
-
 def check_tags(tags):
     if not isinstance(tags, set):
         raise TagsNotValidException
     return True
-
 
 def randomword(length, type):
     import random
@@ -138,25 +144,94 @@ def randomword(length, type):
     return random_string
 
 
-#done
+
+
+#METGODS for users
+
 def add_user(email):
+    # add user with given email
 
     check_email(email)
 
     try:
-        import seq
-        aid = randomword(10,'id')
-        user = db.User(aid, email)
+        import sequencer
+        uid = sequencer.seq('users', sequencer.mock_seq)
+        user = db.User(uid, email)
         db.session.add(user)
         db.session.commit()
     except sqlalchemy.exc.IntegrityError:
+        db.session.rollback()
         raise UserAlreadyExistsException
 
-    return aid
+    return uid
 
 
-#done
+def get_user(id):
+    # get one user with given id
+
+    try:
+        res = db.session.query(db.User).filter(db.User.id == id)
+    except sqlalchemy.exc.IntegrityError:
+        db.session.rollback()
+        raise UserDoesntExist
+
+    if not res or res.count() == 0:
+        raise UserDoesntExist
+
+    return res
+
+
+def get_sum_users():
+    try:
+        res = db.session.query(db.User)
+    except sqlalchemy.exc.IntegrityError:
+        raise UsersDoesntExist
+
+    return res.count()
+
+
+def get_users():
+    # get all users (list of objects)
+
+    try:
+        res = db.session.query(db.User)
+    except sqlalchemy.exc.IntegrityError:
+        raise UsersDoesntExist
+
+    if not res or res.count() == 0:
+        raise UsersDoesntExist
+
+    return res.all()
+
+
+def delete_user(id):
+    # delete user with given id return true or exception
+
+    res = db.session.query(db.User).filter(db.User.id == id).delete()
+    db.session.commit()
+    if res == 0:
+        db.session.rollback()
+        raise UserDoesntExist
+
+    return res
+
+
+def delete_all_users():
+    try:
+        res = db.session.query(db.User).delete()
+        db.session.commit()
+    except sqlalchemy.exc.IntegrityError:
+        raise UserDoesntExist
+    return res
+
+
+
+
+#METHODS for articles
+
 def generate_slug(slug):
+    # method for generate slug if doesnt already exist in db.
+
     res = db.session.query(db.Article).filter(db.Article.slug.like("%"+slug+"%"))
     if not res or res.count() == 0:
         return slug
@@ -165,8 +240,17 @@ def generate_slug(slug):
     return slug + '-' + str(num)
 
 
-#done
+def get_sum_articles():
+    try:
+        res = db.session.query(db.Article)
+    except sqlalchemy.exc.IntegrityError:
+        raise UsersDoesntExist
+
+    return res.count()
+
+
 def add_article(slug, title, id_user, id_category, content):
+    # add article with given params
 
     if not check_slug_and_title(title):
         raise TitleNotValidException
@@ -182,9 +266,10 @@ def add_article(slug, title, id_user, id_category, content):
 
 
     try:
-        aid = randomword(10,'id')
-
-        article = db.Article(aid,id_user, slug, title, id_category, content)
+        import sequencer
+        pid = sequencer.seq('posts', sequencer.mock_seq)
+        print(pid)
+        article = db.Article(pid ,id_user, slug, title, id_category, content)
         db.session.add(article)
         db.session.commit()
 
@@ -192,38 +277,92 @@ def add_article(slug, title, id_user, id_category, content):
         db.session.rollback()
         raise ArticleAlreadyExistsException
 
-    return aid
+    return pid
 
 
-#done- to do tests
-def get_user(id):
+def get_article(id_article):
+    # get article with given id
+
     try:
-        res = db.session.query(db.User).filter(db.User.id == id)
+        res = db.session.query(db.Article.title, db.Article.content).filter(db.Article.id == id_article).first()
     except sqlalchemy.exc.IntegrityError:
-        db.session.rollback()
-        raise UserDoesntExist
+        raise ArticleDoesntExist
 
-    if not res or res.count() == 0:
-        raise UserDoesntExist
+    if res == 0:
+        return False
 
     return res
 
 
-#done- to do tests
-def get_users():
+def get_articles():
+    # get all articles as list of objects
     try:
-        res = db.session.query(db.User)
+        res = db.session.query(db.Article)
     except sqlalchemy.exc.IntegrityError:
         db.session.rollback()
-        raise UsersDoesntExist
+        raise ArticleDoesntExist
 
     if not res or res.count() == 0:
-        raise UsersDoesntExist
+        raise ArticleDoesntExist
 
     return res
 
 
-#done- to do tests
+def delete_article(id):
+    # delete article with given id
+    res = db.session.query(db.Article).filter(db.Article.id == id).delete()
+    db.session.commit()
+    if res==0:
+        db.session.rollback()
+        raise ArticleDoesntExist
+        # delete user with given id return true or exception
+    return res
+
+
+def delete_all_articles():
+    # delete article with given id
+
+    res = db.session.query(db.Article).delete()
+    db.session.commit()
+    if res == 0:
+        db.session.rollback()
+        raise ArticleDoesntExist
+        # delete user with given id return true or exception
+    return res
+
+#implement in future
+# def check_category(id_category):
+#     try:
+#         res = db.session.query(db.Category).filter(db.Category.id == id_category)
+#     except sqlalchemy.exc.IntegrityError:
+#         db.session.rollback()
+#         raise IdCategoryDoesntExist
+#
+#     if not res or res.count() == 0:
+#         raise IdCategoryDoesntExist
+#
+#     return res
+
+def edit_article(id, title, content):
+    # add article with given params
+    if not check_slug_and_title(title):
+        raise TitleNotValidException
+
+    # if not check_category(id_category):
+    #     raise IdCategoryDoesntExist
+
+    try:
+        article = db.session.query(db.Article).filter(db.Article.id == id).update({"title": title, "content": content})
+        db.session.commit()
+        if not article :
+            raise ArticleDoesntExist
+    except sqlalchemy.exc.IntegrityError:
+        db.session.rollback()
+        raise ArticleEditException
+
+    return article
+
+#get tags for given article
 def get_tags(id_article):
     try:
         res = db.session.query(db.Tags).filter(db.Tags.id_article == id_article)
@@ -237,53 +376,6 @@ def get_tags(id_article):
     return res
 
 
-#done- to do tests
-def get_article(id_article):
-    try:
-        res = db.session.query(db.Article).filter(db.Tags.id_article == id_article)
-    except sqlalchemy.exc.IntegrityError:
-        db.session.rollback()
-        raise ArticleDoesntExist
-
-    if not res or res.count() == 0:
-        raise ArticleDoesntExist
-
-    return res
-
-#done - to do tests
-def get_articles():
-    try:
-        res = db.session.query(db.Article)
-    except sqlalchemy.exc.IntegrityError:
-        db.session.rollback()
-        raise ArticleDoesntExist
-
-    if not res or res.count() == 0:
-        raise ArticleDoesntExist
-
-    return res
-
-
-#done
-def delete_article(id):
-    try:
-        res = db.session.query(db.Article).filter(db.Article.id == id)
-    except sqlalchemy.exc.IntegrityError:
-        db.session.rollback()
-        raise ArticleDoesntExist
-
-    if not res or res.count() == 0:
-        raise ArticleDoesntExist
-
-    try:
-        db.session.query(db.Article).filter(db.Article.id == id).delete()
-        db.session.commit()
-
-    except sqlalchemy.exc.IntegrityError:
-        db.session.rollback()
-        raise ArticleDoesntExist
-
-    return True
 
 
 #done
@@ -359,6 +451,3 @@ def add_comment(id_user,id_article, content):
     # return aid
 
 
-#not done
-def edit_article(id, title, id_category, content):
-   pass
