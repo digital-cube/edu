@@ -6,10 +6,10 @@ engine = create_engine('sqlite:///:memory:', echo=False)
 Base = declarative_base()
 
 from sqlalchemy import Column, Integer, String, SmallInteger, Boolean, Text, DateTime
+from sequencer import seq
 
 
-class SequencerTypeError(NameError):
-    pass
+
 
 
 class ToManyAttemptsException(NameError):
@@ -19,15 +19,12 @@ class ToManyAttemptsException(NameError):
 class User(Base):
      __tablename__ = 'users'
 
-     id = Column(String(10), primary_key=True)
+     id = Column(String, primary_key=True)
      email = Column(String, unique=True)
 
      def __init__(self, id, email):
         self.id = id
         self.email = email
-
-     def __repr__(self):
-        return "<User(email='%s'>".format(self.email)
 
 
 class Article(Base):
@@ -100,6 +97,19 @@ class Comments(Base):
         return "<Article(id='{}',id_article='{}',id_user='{}', email_of_non_registerd_user='{}', name_of_non_registered_user='{}', comment='{}', created='{}')>".format(
             self.id, self.id_article, self.id_user, self.email_of_non_registerd_user,  self.comment, self.created)
 
+class Category(Base):
+    __tablename__ = 'category'
+
+    id = Column(String(10), primary_key=True)
+
+
+    def __init__(self, id, id_article, id_user, email_of_non_registerd_user, name_of_non_registered_user, comment, created):
+        self.id = id
+
+
+    def __repr__(self):
+        return "{}".format(self.id)
+
 
 class s_articles(Base):
     __tablename__ = 's_articles'
@@ -150,6 +160,7 @@ class Sequencer(Base):
         self.type = _type
         self.s_table = s_table
         self.ordered = ordered
+
 
 class s_users(Base):
     __tablename__ = 's_users'
