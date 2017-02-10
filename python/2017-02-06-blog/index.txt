@@ -28,3 +28,21 @@ INDEX po imenu:
 aca aleksandar andrija goran igor ivan ivan jovan laza marinko mika mladen munira nenad pera slavisa sloba steva trta zika
 
 
+
+
+
+Symbol	Weight	Huffman Code
+A	2	01
+R	1	00
+D	1	100
+I	1	101
+J	1	110
+N	1	111
+011111000010111001
+
+011111000010111001
+--------________--.......
+
+ANDRIJA : 7 bajtova ( 7*8 56 bitova ) kompresovano zauzima (  18 bitova odnosno 3 bajta)
+
+ANDRIJA

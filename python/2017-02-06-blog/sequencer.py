@@ -43,7 +43,10 @@ def real_seq(table_id, length, cls):
             raise SequencerTooManyAttemptsToGenerateID
 
 
-def seq(table, f=None):
+def seq(table):
+
+    if not hasattr(seq, 'f'):
+        seq.f = None
 
     from db import User
 
@@ -53,7 +56,7 @@ def seq(table, f=None):
     if table not in m:
         raise SequencerUnknownTableException
 
-    if not f:
+    if not seq.f:
         return real_seq(m[table]['id'], m[table]['length'], m[table]['cls'])
 
-    return f(m[table]['id'], m[table]['length'])
+    return seq.f(m[table]['id'], m[table]['length'])
