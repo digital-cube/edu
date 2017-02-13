@@ -6,9 +6,6 @@ import sequencer
 DEFAULT_TEST_PASSWORD = '123'
 DEFAULT_AUTHOR_ID = 'u00003'
 
-from db import session, User
-from sequencer import seq
-
 # INTEGRACIONI TEST JER SE KORISTI BAZA..
 
 sequencer.seq.f = sequencer.mock_seq
@@ -29,7 +26,7 @@ class TestBlog(TestCase):
 
 
     def test_002_blog_check_password(self):
-        self.assertTrue(blog.get_blog().check_password('123'))
+        self.assertFalse(blog.get_blog().check_password('123'))
         self.assertFalse(blog.get_blog().check_password('12'))
 
     def test_003_add_user_to_db(self):
@@ -86,4 +83,27 @@ class TestBlog(TestCase):
 
         print(post.title)
         print(post.author.username)
+
+    def test_011_check_pass(self):
+
+        DEFAULT_TEST_PASSWORD = 'aLek.san1dar)'
+
+        self.assertFalse(blog.get_blog().check_password('aleksandar'))
+        self.assertFalse(blog.get_blog().check_password('ALEKSANDAR'))
+        self.assertFalse(blog.get_blog().check_password('1231234343'))
+        self.assertTrue(blog.get_blog().check_password('aLek.san1dar)'))
+        self.assertTrue(blog.get_blog().check_password('5454567d'))
+        self.assertFalse(blog.get_blog().check_password('123GooD.2'))
+        self.assertFalse(blog.get_blog().check_password('qweGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('asdGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('zxcGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('11111111'))
+
+        with self.assertRaises(blog.UserPasswordNotValid):
+            blog.get_blog().create_user('author@digitalcube.rs', 'aleksandar')
+        with self.assertRaises(blog.UserPasswordNotValid):
+            blog.get_blog().create_user('author@digitalcube.rs', '1231234343')
+        blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
+        with self.assertRaises(blog.UsernameAlreadyExistsException):
+            blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
 

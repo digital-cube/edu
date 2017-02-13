@@ -1,6 +1,6 @@
 import random
 
-from db import session, User, Post
+from db import *
 from sequencer import seq
 import sqlalchemy
 import re
@@ -14,6 +14,9 @@ class UserPasswordNotStrongEnough(BaseException):
 class InvalidSlugException(BaseException):
     pass
 
+class UserPasswordNotValid(BaseException):
+    pass
+
 
 class Blog(object):
 
@@ -24,8 +27,27 @@ class Blog(object):
     #TODO: bar jedan broj i minimum 8 karaktera.
     #TODO: pokrite ovu funkciju testovima samo za nju, kao i create_user sa setom istih testova
 
+
     def check_password(self, password):
-        return len(password) > 2
+        number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+        character = ['.', '?', '!', ',', ';',':','-','_','”','„','(',')','[',']','{','}','%', '#','@','$','%','^','&']
+        three = ['123','asd','qwe','zxc']
+
+
+        if len(password) < 8:
+            return False
+
+        if (password[0:len(password)]).isdigit():
+            return False
+
+        if password[0:3] in three:
+            return False
+
+        for i in password:
+            if i in range(ord('A'),ord('Z')) or i in range(ord('a'),ord('z')) or i in character or i in number:
+                return True
+        return False
+
 
     def is_slug_in_db(self, slug):
 
@@ -62,7 +84,7 @@ class Blog(object):
         author = User(seq('users'), email, password, fname, lname)
 
         if not self.check_password(password):
-            raise UserPasswordNotStrongEnough
+            raise UserPasswordNotValid
 
         try:
             self.session.add(author)
