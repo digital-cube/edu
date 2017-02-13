@@ -133,26 +133,3 @@ class TestBlog(TestCase):
         self.assertEqual(3['bas je dobar ovaj post', 'jes vala'],
                          [comment.comment_text for comment in post.comments])
 
-    def test_011_check_pass(self):
-
-        DEFAULT_TEST_PASSWORD = 'aLek.san1dar)'
-
-        self.assertFalse(blog.get_blog().check_password('aleksandar'))
-        self.assertFalse(blog.get_blog().check_password('ALEKSANDAR'))
-        self.assertFalse(blog.get_blog().check_password('1231234343'))
-        self.assertTrue(blog.get_blog().check_password('aLek.san1dar)'))
-        self.assertTrue(blog.get_blog().check_password('5454567d'))
-        self.assertFalse(blog.get_blog().check_password('123GooD.2'))
-        self.assertFalse(blog.get_blog().check_password('qweGooD.2'))
-        self.assertFalse(blog.get_blog().check_password('asdGooD.2'))
-        self.assertFalse(blog.get_blog().check_password('zxcGooD.2'))
-        self.assertFalse(blog.get_blog().check_password('11111111'))
-
-        with self.assertRaises(blog.UserPasswordNotValid):
-            blog.get_blog().create_user('author@digitalcube.rs', 'aleksandar')
-        with self.assertRaises(blog.UserPasswordNotValid):
-            blog.get_blog().create_user('author@digitalcube.rs', '1231234343')
-        blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
-        with self.assertRaises(blog.UsernameAlreadyExistsException):
-            blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
-
