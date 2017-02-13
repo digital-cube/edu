@@ -48,10 +48,12 @@ def seq(table):
     if not hasattr(seq, 'f'):
         seq.f = None
 
-    from db import User
+    from db import User, Post, Tag, Comment
 
     m = {'users': {'length': 5, 'id': 'u', 'cls': User},
-         'posts': {'length': 7, 'id': 'p', 'cls': None}}
+         'posts': {'length': 7, 'id': 'p', 'cls': Post},
+         'tags':  {'length': 8, 'id': 't', 'cls': Tag},
+         'comments': {'length': 6, 'id': 'c', 'cls': Comment}}
 
     if table not in m:
         raise SequencerUnknownTableException

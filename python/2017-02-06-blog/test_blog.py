@@ -48,8 +48,8 @@ class TestBlog(TestCase):
 
         author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
 
-
         blog.get_blog().add_post(author, 'my-first-post', 'My first post', 'Hi')
+        blog.get_blog().add_post(author, 'my-second-post', 'My second post', 'Hi')
 
         with self.assertRaises(blog.InvalidSlugException):
             blog.get_blog().add_post(author, 'my first-post', 'My first post', 'Hi')
@@ -79,10 +79,59 @@ class TestBlog(TestCase):
 
     def test_010_get_post_by_slug(self):
 
-        post = blog.get_blog().get_post_by_slug('my-first-post')
+        self.assertEqual(['my-first-post', 'my-second-post'],
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts])
 
-        print(post.title)
-        print(post.author.username)
+        self.assertEqual('My first post',
+                         blog.get_blog().get_post_by_slug('my-first-post').title)
+
+        self.assertEqual('author@digitalcube.rs',
+                         blog.get_blog().get_post_by_slug('my-first-post').author.username)
+
+    def test_011_post_tags(self):
+        author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
+        post = blog.get_blog().add_post(author, 'my-tagged-post', 'My 3rd post', 'Hi5')
+
+        self.assertEqual('my-tagged-post',
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts][-1])
+
+        blog.get_blog().tag_it(post, ['novo', 'aktuelno', 'interesantno'])
+
+        self.assertEqual(['novo', 'aktuelno', 'interesantno'],
+                         [tag.name for tag in post.tags])
+
+        post2 = blog.get_blog().add_post(author, 'my-tagged2-post', 'My 4th post', 'hi4')
+
+        self.assertEqual('my-tagged2-post',
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts][-1])
+
+        blog.get_blog().tag_it(post2, ['novo', 'plavo'])
+        self.assertEqual(['novo', 'plavo'],
+                         [tag.name for tag in post2.tags])
+
+        self.assertEqual(['my-tagged-post', 'my-tagged2-post'],
+                         [post.slug for post in
+                          blog.get_blog().all_posts_tagged_with('Novo')])
+
+        self.assertEqual(['my-tagged2-post'],
+                         [post.slug for post in
+                          blog.get_blog().all_posts_tagged_with('PLAVO')])
+
+    def test_012_comments(self):
+
+        author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
+        post = blog.get_blog().get_post_by_slug('my-tagged2-post')
+
+        self.assertEqual([], post.comments)
+
+        post.add_comment(author, 'bas je dobar ovaj post')
+        post.add_comment(author, 'jes vala')
+
+        self.assertEqual(3['bas je dobar ovaj post', 'jes vala'],
+                         [comment.comment_text for comment in post.comments])
 
     def test_011_check_pass(self):
 
