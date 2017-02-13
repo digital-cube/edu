@@ -6,9 +6,6 @@ import sequencer
 DEFAULT_TEST_PASSWORD = '123'
 DEFAULT_AUTHOR_ID = 'u00003'
 
-from db import session, User
-from sequencer import seq
-
 # INTEGRACIONI TEST JER SE KORISTI BAZA..
 
 sequencer.seq.f = sequencer.mock_seq
@@ -29,7 +26,7 @@ class TestBlog(TestCase):
 
 
     def test_002_blog_check_password(self):
-        self.assertTrue(blog.get_blog().check_password('123'))
+        self.assertFalse(blog.get_blog().check_password('123'))
         self.assertFalse(blog.get_blog().check_password('12'))
 
     def test_003_add_user_to_db(self):
@@ -51,8 +48,8 @@ class TestBlog(TestCase):
 
         author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
 
-
         blog.get_blog().add_post(author, 'my-first-post', 'My first post', 'Hi')
+        blog.get_blog().add_post(author, 'my-second-post', 'My second post', 'Hi')
 
         with self.assertRaises(blog.InvalidSlugException):
             blog.get_blog().add_post(author, 'my first-post', 'My first post', 'Hi')
@@ -82,8 +79,80 @@ class TestBlog(TestCase):
 
     def test_010_get_post_by_slug(self):
 
-        post = blog.get_blog().get_post_by_slug('my-first-post')
+        self.assertEqual(['my-first-post', 'my-second-post'],
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts])
 
-        print(post.title)
-        print(post.author.username)
+        self.assertEqual('My first post',
+                         blog.get_blog().get_post_by_slug('my-first-post').title)
+
+        self.assertEqual('author@digitalcube.rs',
+                         blog.get_blog().get_post_by_slug('my-first-post').author.username)
+
+    def test_011_post_tags(self):
+        author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
+        post = blog.get_blog().add_post(author, 'my-tagged-post', 'My 3rd post', 'Hi5')
+
+        self.assertEqual('my-tagged-post',
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts][-1])
+
+        blog.get_blog().tag_it(post, ['novo', 'aktuelno', 'interesantno'])
+
+        self.assertEqual(['novo', 'aktuelno', 'interesantno'],
+                         [tag.name for tag in post.tags])
+
+        post2 = blog.get_blog().add_post(author, 'my-tagged2-post', 'My 4th post', 'hi4')
+
+        self.assertEqual('my-tagged2-post',
+                         [post.slug for post in
+                          blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID).posts][-1])
+
+        blog.get_blog().tag_it(post2, ['novo', 'plavo'])
+        self.assertEqual(['novo', 'plavo'],
+                         [tag.name for tag in post2.tags])
+
+        self.assertEqual(['my-tagged-post', 'my-tagged2-post'],
+                         [post.slug for post in
+                          blog.get_blog().all_posts_tagged_with('Novo')])
+
+        self.assertEqual(['my-tagged2-post'],
+                         [post.slug for post in
+                          blog.get_blog().all_posts_tagged_with('PLAVO')])
+
+    def test_012_comments(self):
+
+        author = blog.get_blog().get_user_by_id(DEFAULT_AUTHOR_ID)
+        post = blog.get_blog().get_post_by_slug('my-tagged2-post')
+
+        self.assertEqual([], post.comments)
+
+        post.add_comment(author, 'bas je dobar ovaj post')
+        post.add_comment(author, 'jes vala')
+
+        self.assertEqual(3['bas je dobar ovaj post', 'jes vala'],
+                         [comment.comment_text for comment in post.comments])
+
+    def test_011_check_pass(self):
+
+        DEFAULT_TEST_PASSWORD = 'aLek.san1dar)'
+
+        self.assertFalse(blog.get_blog().check_password('aleksandar'))
+        self.assertFalse(blog.get_blog().check_password('ALEKSANDAR'))
+        self.assertFalse(blog.get_blog().check_password('1231234343'))
+        self.assertTrue(blog.get_blog().check_password('aLek.san1dar)'))
+        self.assertTrue(blog.get_blog().check_password('5454567d'))
+        self.assertFalse(blog.get_blog().check_password('123GooD.2'))
+        self.assertFalse(blog.get_blog().check_password('qweGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('asdGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('zxcGooD.2'))
+        self.assertFalse(blog.get_blog().check_password('11111111'))
+
+        with self.assertRaises(blog.UserPasswordNotValid):
+            blog.get_blog().create_user('author@digitalcube.rs', 'aleksandar')
+        with self.assertRaises(blog.UserPasswordNotValid):
+            blog.get_blog().create_user('author@digitalcube.rs', '1231234343')
+        blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
+        with self.assertRaises(blog.UsernameAlreadyExistsException):
+            blog.get_blog().create_user('autuuor@digitalcube.rs', DEFAULT_TEST_PASSWORD)
 

@@ -1,6 +1,8 @@
 import random
 
-from db import session, User, Post
+
+from db import session, User, Post, Tag
+
 from sequencer import seq
 import sqlalchemy
 import re
@@ -14,6 +16,9 @@ class UserPasswordNotStrongEnough(BaseException):
 class InvalidSlugException(BaseException):
     pass
 
+class UserPasswordNotValid(BaseException):
+    pass
+
 
 class Blog(object):
 
@@ -24,8 +29,27 @@ class Blog(object):
     #TODO: bar jedan broj i minimum 8 karaktera.
     #TODO: pokrite ovu funkciju testovima samo za nju, kao i create_user sa setom istih testova
 
+
     def check_password(self, password):
-        return len(password) > 2
+        number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+        character = ['.', '?', '!', ',', ';',':','-','_','”','„','(',')','[',']','{','}','%', '#','@','$','%','^','&']
+        three = ['123','asd','qwe','zxc']
+
+
+        if len(password) < 8:
+            return False
+
+        if (password[0:len(password)]).isdigit():
+            return False
+
+        if password[0:3] in three:
+            return False
+
+        for i in password:
+            if i in range(ord('A'),ord('Z')) or i in range(ord('a'),ord('z')) or i in character or i in number:
+                return True
+        return False
+
 
     def is_slug_in_db(self, slug):
 
@@ -49,9 +73,6 @@ class Blog(object):
         return re.match('^[\.a-z0-9\-_]+$', slug) != None
 
     def check_slug_aviability(self, slug):
-        if not self.check_slug(slug):
-            return False
-
         return not self.is_slug_in_db(slug)
 
     def make_slug(self, title):
@@ -62,7 +83,7 @@ class Blog(object):
         author = User(seq('users'), email, password, fname, lname)
 
         if not self.check_password(password):
-            raise UserPasswordNotStrongEnough
+            raise UserPasswordNotValid
 
         try:
             self.session.add(author)
@@ -84,12 +105,15 @@ class Blog(object):
 
         return res[0]
 
-    def add_post(self, id_author, slug, title, content):
+    def add_post(self, author, slug, title, content):
 
-        post = Post(seq('posts'), id_author, slug, title, content)
+        if not self.check_slug(slug):
+            raise InvalidSlugException
 
         if not self.check_slug_aviability(slug):
             raise InvalidSlugException
+
+        post = Post(seq('posts'), author, slug, title, content)
 
         self.session.add(post)
         try:
@@ -97,6 +121,42 @@ class Blog(object):
         except sqlalchemy.exc.IntegrityError:
 
             self.session.rollback()
+
+        return post
+
+    def make_tag_if_not_exists_and_return_tag_object(self, tag_name):
+        res = self.get_tag(tag_name)
+        if not res:
+            res = Tag(seq('tags'), tag_name)
+            self.session.add(res)
+
+        return res
+
+    def get_tag(self, tag_name):
+        tag_name = Tag.fix_tag_name(tag_name)
+        return self.session.query(Tag).filter(
+            Tag.name == tag_name
+        ).one_or_none()
+
+    def tag_it(self, post, list_of_tag_names):
+
+        try:
+            for tag_name in list_of_tag_names:
+                post.add_tag(
+                    self.make_tag_if_not_exists_and_return_tag_object(tag_name))
+
+            self.session.commit()
+
+        except Exception as e:
+            self.session.rollback()
+
+    def all_posts_tagged_with(self, tag_name):
+
+        tag = self.get_tag(tag_name)
+        if not tag:
+            return []
+
+        return tag.posts
 
 
 def get_blog():

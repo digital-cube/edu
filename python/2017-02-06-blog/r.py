@@ -29,7 +29,7 @@ if __name__=="__main__":
 #     s = set()
 #     iter = 0
 #
-#     while len(s)!=100:
+#     while len(s)!=30:
 #         iter+=1
 #         random.shuffle(a)
 #         s.add(''.join(a[:length]))
@@ -37,4 +37,5 @@ if __name__=="__main__":
 #     ar = list(s)
 #     print("l{}={}".format(length,ar))
 #
+
 # self.assertTrue(True)
