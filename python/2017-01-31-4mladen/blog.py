@@ -6,6 +6,9 @@ from sqlalchemy import select
 class UserDoesntExist(BaseException):
     pass
 
+class TagsDoesentExist(BaseException):
+    pass
+
 
 class UsersDoesntExist(BaseException):
     pass
@@ -143,6 +146,32 @@ def randomword(length, type):
 
     return random_string
 
+def check_pass(password):
+    import re
+    return re.match('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,22}', password) != None
+
+    # ^, & - Matches any string at the beginning of it and end of it
+
+    # ?=n Matches any string that is followed by a specific string n
+    # . Find a single character, except newline or line terminator
+    # * Matches any string that contains zero or more occurrences
+    # [A-Za-z] only alfabetic char
+    # \d only digit
+
+    # Minimum 8 characters | at least 1 Alphabet and 1 Number:
+    #"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+
+    # Minimum 8 characters | at least 1 Alphabet and 1 Number and 1 Special Character:
+    # "^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+
+    # Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number:
+    # "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+
+    # Minimum 8 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet and 1 Number and 1 Special Character:
+    # "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}"
+
+    # Minimum 8 and Maximum 22 characters at least 1 Uppercase Alphabet, 1 Lowercase Alphabet, 1 Number and 1 Special Character:
+    # "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,22}"
 
 
 
@@ -267,7 +296,7 @@ def add_article(slug, title, id_user, id_category, content):
 
     try:
         import sequencer
-        pid = sequencer.seq('posts', sequencer.mock_seq)
+        pid = sequencer.seq('articles', sequencer.mock_seq)
         print(pid)
         article = db.Article(pid ,id_user, slug, title, id_category, content)
         db.session.add(article)
@@ -365,7 +394,7 @@ def edit_article(id, title, content):
 #get tags for given article
 def get_tags(id_article):
     try:
-        res = db.session.query(db.Tags).filter(db.Tags.id_article == id_article)
+        res = db.session.query(db.Tag).filter(db.Tag.id_article == id_article)
     except sqlalchemy.exc.IntegrityError:
         db.session.rollback()
         raise TagsDoesntExist
@@ -373,10 +402,20 @@ def get_tags(id_article):
     if not res or res.count() == 0:
         raise TagsDoesntExist
 
+    return res.all()
+
+
+
+def delete_tag(id):
+    # delete user with given id return true or exception
+
+    res = db.session.query(db.Tag).filter(db.Tag.id == id).delete()
+    db.session.commit()
+    if res == 0:
+        db.session.rollback()
+        raise TagsDoesntExist
+
     return res
-
-
-
 
 #done
 def add_edit_tags(id_article, tags):
@@ -391,7 +430,7 @@ def add_edit_tags(id_article, tags):
         raise ArticleAlreadyExistsException
 
     try:
-        tag_res = db.session.query(db.Tags).filter(db.Tags.id_article == id_article).all()
+        tag_res = db.session.query(db.Tag).filter(db.Tag.id_article == id_article).all()
     except sqlalchemy.exc.IntegrityError:
         db.session.rollback()
         raise TagsDoesentExist
@@ -407,7 +446,7 @@ def add_edit_tags(id_article, tags):
     try:
         for tag in tags:
             aid = randomword(10, 'id')
-            tag = db.Tags(aid, id_article, tag)
+            tag = db.Tag(aid, id_article, tag)
             db.session.add(tag)
             db.session.commit()
 
@@ -434,20 +473,33 @@ def edit_num_of_likes(id_article, num):
 
 
 #not done
-def add_comment(id_user,id_article, content):
-    #we need to test is correct content of commentar
-    return True
-    try:
-        aid = randomword(10,'id')
+def add_comment(id_user,id_article, email_of_non_registerd_user, name_of_non_registered_user, comment_text):
+    import sequencer
+    pid = sequencer.seq('comments', sequencer.mock_seq)
 
-        comment = db.Comment(aid,id_user,id_article, content)
+    if not id_user:
+        import socket
+        ip_user = socket.gethostbyname(socket.gethostname())
+        id_comment = pid
+
+        try:
+            ip_2_comment = db.ip_2_Comm(ip_user, id_comment, email_of_non_registerd_user, name_of_non_registered_user)
+            db.session.add(ip_2_comment)
+            print(ip_2_comment)
+        except:
+            db.session.rollback()
+            raise Exception
+
+    try:
+
+        comment = db.Comment(pid, id_user, id_article, comment_text)
         db.session.add(comment)
         db.session.commit()
 
     except sqlalchemy.exc.IntegrityError:
         db.session.rollback()
-        raise CommentAlreadyExistsException
+        raise ArticleAlreadyExistsException
 
-    # return aid
+    return pid
 
 
