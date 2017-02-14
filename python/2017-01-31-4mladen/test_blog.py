@@ -3,9 +3,19 @@ import blog
 
 import sequencer
 
+#import unittest
+# ubaciti
+#
+# class WidgetTestCase(unittest.TestCase):
+#     def setUp(self):
+#         self.widget = Widget('The widget')
+#
+class TesstBlog(unittest.TestCase):
 
-class TestBlog(unittest.TestCase):
+    def tearDown(self):
+        blog.delete_all_users()
 
+    #tea
     def randomword(self, length, type):
 
         import random
@@ -43,7 +53,7 @@ class TestBlog(unittest.TestCase):
         self.assertEqual('u00001', sequencer.seq('users', sequencer.mock_seq))
 
 
-        self.assertEqual('p0000000', sequencer.seq('posts', sequencer.mock_seq))
+        # self.assertEqual('p0000000', sequencer.seq('posts', sequencer.mock_seq))
 
         with self.assertRaises(sequencer.SequencerUnknownTableException):
             sequencer.seq('xxx', sequencer.mock_seq)
@@ -52,6 +62,14 @@ class TestBlog(unittest.TestCase):
 
 
     #user tests
+    def test_check_password(self):
+        self.assertFalse(blog.check_pass('asddasSAD123'))
+        self.assertFalse(blog.check_pass(''))
+        self.assertFalse(blog.check_pass('a'))
+        self.assertFalse(blog.check_pass('aaa'))
+        self.assertFalse(blog.check_pass('sadasdasddasdSAD23423'))
+        self.assertTrue(blog.check_pass('sadasd!@#!@#12asddasdSAD23423'))
+        self.assertFalse(blog.check_pass('asasdasdasdasdasd'))
 
     def test_000_delete_all_users(self):
 
@@ -79,7 +97,7 @@ class TestBlog(unittest.TestCase):
         self.assertEqual(3,blog.get_sum_users())
 
         self.assertTrue(blog.get_users())
-        blog.delete_all_users()
+        # blog.delete_all_users()
 
     def test_002_add_user(self):
 
@@ -114,7 +132,7 @@ class TestBlog(unittest.TestCase):
         with self.assertRaises(blog.UserAlreadyExistsException):
             self.assertTrue(self.add_user('nikola@nnn.com'))
 
-        blog.delete_all_users()
+        # blog.delete_all_users()
 
     def test_003_get_user(self):
         #user with given id doesnt exist
@@ -129,11 +147,12 @@ class TestBlog(unittest.TestCase):
 
         self.assertTrue(blog.get_user(id))
 
-        blog.delete_all_users()
+        # blog.delete_all_users()
 
     def test_004_delete_user(self):
 
         self.assertEqual(0, blog.get_sum_users())
+        #number of users in database
         # add user with given email, delete it and check it again. Except user doesent exist
         id = self.add_user('newuser@dcube.rs')
 
@@ -203,7 +222,7 @@ class TestBlog(unittest.TestCase):
             blog.add_article('', 'ispravan stitle', id_user, '', '')
 
         self.assertTrue(blog.delete_all_articles())
-        self.assertTrue(blog.delete_all_users())
+        # self.assertTrue(blog.delete_all_users())
 
     def test_008_get_articles(self):
         self.assertEqual(0, blog.get_sum_articles())
@@ -216,7 +235,6 @@ class TestBlog(unittest.TestCase):
         self.assertEqual(3, blog.get_sum_articles())
         self.assertEqual(3, blog.get_sum_users())
 
-        self.assertTrue(blog.delete_all_users())
         self.assertTrue(blog.delete_all_articles())
 
     def test_009_get_article(self):
@@ -233,7 +251,6 @@ class TestBlog(unittest.TestCase):
         self.assertEqual(title, blog.get_article(id2).title)
         self.assertFalse(blog.get_article('asdasdas'))
 
-        self.assertTrue(blog.delete_all_users())
         self.assertTrue(blog.delete_all_articles())
 
     def test_010_edit_article(self):
@@ -287,10 +304,27 @@ class TestBlog(unittest.TestCase):
         with self.assertRaises(blog.TagsDoesntExist):
              self.assertTrue(blog.get_tags('asdasda'))
 
-        # id_user = self.add_user('mlasdad@mladen.com')
+        id_article = self.add_article(None, 'arasdasdtikal@from.tags')
 
-    def test_013_add_comment(self):
-        pass
+
+        self.assertTrue(blog.add_edit_tags(id_article, {'prvi', 'drugi', 'treci'}))
+
+        list_of_tags  = blog.get_tags(id_article)
+
+        self.assertEqual(list_of_tags,blog.get_tags(id_article))
+
+        for i in list_of_tags:
+            self.assertTrue(blog.delete_tag(i.id))
+        with self.assertRaises(blog.TagsDoesntExist):
+            blog.get_tags(id_article)
+
+    # def test_013_add_comment(self):
+        # id_user = self.add_user('artijjkal@from.tags')
+        # id_article = self.add_article(id_user, None)
+        # print(id_user)
+        # print(id_article)
+        # # tags not walid
+        # print(blog.add_comment(id_user,id_article,None,None,'prvi komentar'))
     def test_014_edit_comment(self):
         pass
     def test_015_delete_comment(self):
@@ -299,7 +333,6 @@ class TestBlog(unittest.TestCase):
         pass
 
 
-    #other
     def test_017_edit_number_of_likes(self):
         pass
     def test_018_edit_number_of_comments(self):

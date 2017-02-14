@@ -30,8 +30,7 @@ class User(SqlAlchemyDeclarativeBase):
 
     # posts = sqlalchemy.orm.relationship('Post', back_populates='posts', lazy="joined")
 
-    posts = sqlalchemy.orm.relationship('Post',
-                                        foreign_keys='Post.id_author')
+    posts = sqlalchemy.orm.relationship('Post',foreign_keys='Post.id_author')
 
     def __init__(self, id, username, password, fname, lname):
         self.id = id
