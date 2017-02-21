@@ -1,10 +1,12 @@
 from bs4 import BeautifulSoup
 import urllib.request
+import urllib.parse
 import hashlib
+import json
+import pickle
+import os
 
-search4 = \
-    ['Balkan', 'Energy', 'Balkan Energy',
-     'Reports', 'Business', 'services']
+search4 = ['Serbia', 'Bosnia and Herzegovina', 'Montenegro', 'Kosovo', 'Macedonia', 'Albania', 'Turkey', 'Slovenia', 'Croatia', 'Romania', 'Bulgaria', 'Greece', 'Cyprus energy efficiency', 'renewable energy', 'climate change', 'environment', 'waste', 'water', 'wind', 'solar', 'photovoltaic', 'geothermal', 'biomass', 'biogas', 'CHP', 'cogeneration']
 
 search4=[s.lower() for s in search4]
 
@@ -15,11 +17,16 @@ def get(url):
     if not url:
         return False
 
-    fname = 'cache/cache-{}'.format(hashlib.md5(url.encode('utf-8')).hexdigest())
+    p = urllib.parse.urlparse(url)
+    p.netloc
+
+    os.system('mkdir -p cache/{}'.format(p.netloc))
+
+    fname = 'cache/{}/cache-{}'.format(p.netloc, hashlib.md5(url.encode('utf-8')).hexdigest())
 
     try:
         with open(fname,'rb') as f:
-            print('reading from cache {}'.format(fname))
+            # print('reading from cache {}'.format(fname))
             return f.read()
     except:
         pass
@@ -38,7 +45,10 @@ def get(url):
 
     return content
 
-def fetch_and_parse(url, results, level):
+def fetch_and_parse(url, class2remove, results, level):
+
+    urlparsed = urllib.parse.urlparse(url)
+
 
     global parsed
 
@@ -60,6 +70,10 @@ def fetch_and_parse(url, results, level):
     for script in soup(["script", "style"]):
         script.extract()
 
+    for cls in class2remove:
+        for div in soup.find_all("div", {'class': cls}):
+            div.decompose()
+
     text = soup.get_text().lower()
 
     occ = []
@@ -67,8 +81,6 @@ def fetch_and_parse(url, results, level):
         c = text.count(s)
         if c > 0:
             occ.append((s, c))
-
-    print(occ)
 
     parsed.add(url)
 
@@ -89,13 +101,15 @@ def fetch_and_parse(url, results, level):
                 or link[0] == '#':
             continue
         if link[0] == '/':
-            link = 'http://SITE.COM'+link
+            link = urlparsed.scheme+"://"+urlparsed.netloc+"/"+link
 
-        links.add(link)
+        urlparsed_link = urllib.parse.urlparse(link)
+
+        if urlparsed_link.netloc == urlparsed.netloc:
+            links.add(link)
 
     for link in links:
-        fetch_and_parse(link,
-                        results[url]['links'], level+1)
+        fetch_and_parse(link, class2remove, results[url]['links'], level+1)
 
 
 def devel(uri):
@@ -107,14 +121,32 @@ def devel(uri):
     for script in soup(["script", "style"]):
         script.extract()
 
+
     text = soup.get_text().lower()
+
 
 if __name__ == "__main__":
 
     results = {}
 
-    # fetch_and_parse("http://balkangreenenergynews.com/", results, 0)
+    class2remove = ('copyright', 'footer_bottom', 'top_header', 'footer', 'header')
 
-    devel('http://balkangreenenergynews.com/')
+    fetch_and_parse("http://renewablesnow.com", class2remove, results, 0)
+    print('-'*100)
 
-    print(results)
+    with open('site.pck', 'wb') as f:
+        pickle.dump(results, f)
+
+    with open('site.pck', 'rb') as f:
+        results = pickle.load(f)
+
+    for i in results:
+        for l in results[i]['links']:
+            site = results[i]['links'][l]
+            print(site['url'])
+            print(site['occurance'])
+            print('')
+
+
+
+    # print(json.dumps(results, indent=4))
