@@ -183,7 +183,6 @@ class TesstBlog(unittest.TestCase):
 
     def test_006_delete_article(self):
 
-
         self.assertEqual(0, blog.get_sum_articles())
 
         id_article = self.add_article(None,'mlasadd@mladen.com')

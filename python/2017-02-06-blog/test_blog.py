@@ -130,6 +130,6 @@ class TestBlog(TestCase):
         post.add_comment(author, 'bas je dobar ovaj post')
         post.add_comment(author, 'jes vala')
 
-        self.assertEqual(3['bas je dobar ovaj post', 'jes vala'],
+        self.assertEqual(['bas je dobar ovaj post', 'jes vala'],
                          [comment.comment_text for comment in post.comments])
 
