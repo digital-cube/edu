@@ -83,5 +83,5 @@ def dec2alphabet_and_numbs_62(dec):
     return res[::-1]
 
 if __name__=="__main__":
-    for i in range(10000,10300):
+    for i in range(100000,103000):
         print(i, dec2alphabet_and_numbs_62(i), dec2alphabet_and_numbs_36(i), dec2hex(i), dec2bin(i))
