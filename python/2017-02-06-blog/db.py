@@ -34,6 +34,9 @@ class User(SqlAlchemyDeclarativeBase):
 
     def __init__(self, id, username, password, fname, lname):
         self.id = id
+        if not is_valid_email(username):
+            raise NotValidEmail
+
         self.username = username
         self.password = password
         self.fname = fname
